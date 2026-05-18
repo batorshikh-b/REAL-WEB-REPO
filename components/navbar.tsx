@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const navigation = [
@@ -69,11 +69,9 @@ export function Navbar() {
         
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-3">
           <ThemeToggle />
-          <Button asChild className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground px-5">
-            <Link href="#contact">
-              Contact Us
-            </Link>
-          </Button>
+          <GlassButton size="sm" onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}>
+            Contact Us
+          </GlassButton>
         </div>
       </nav>
       
@@ -95,11 +93,9 @@ export function Navbar() {
             </div>
             <div className="pt-4 flex items-center gap-4 border-t border-border mt-4">
               <ThemeToggle />
-              <Button asChild className="flex-1 rounded-full bg-primary hover:bg-primary/90">
-                <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>
-                  Contact Us
-                </Link>
-              </Button>
+              <GlassButton size="sm" className="flex-1" onClick={() => { setMobileMenuOpen(false); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}>
+                Contact Us
+              </GlassButton>
             </div>
           </div>
         </div>

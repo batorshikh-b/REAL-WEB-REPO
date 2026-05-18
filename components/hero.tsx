@@ -1,6 +1,7 @@
-import Link from "next/link";
+"use client";
+
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 
 export function Hero() {
@@ -24,17 +25,13 @@ export function Hero() {
           </p>
           
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" asChild className="bg-black dark:bg-white text-white dark:text-black hover:bg-black/90 dark:hover:bg-white/90">
-              <Link href="#contact" className="flex items-center gap-2">
-                Start Your Journey
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-            <Button variant="outline" size="lg" asChild className="border-foreground/20 dark:border-white/20">
-              <Link href="#services">
-                Explore Services
-              </Link>
-            </Button>
+            <GlassButton size="lg" onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}>
+              Start Your Journey
+              <ArrowRight className="h-4 w-4" />
+            </GlassButton>
+            <GlassButton size="lg" onClick={() => document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" })}>
+              Explore Services
+            </GlassButton>
           </div>
           
           {/* Stats */}
