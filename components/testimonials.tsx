@@ -1,64 +1,89 @@
-import { Quote } from "lucide-react";
+"use client";
 
-const testimonials = [
-  {
-    quote: "NexusIT transformed our entire IT infrastructure. Their cloud migration strategy reduced our operational costs by 40% while improving system reliability.",
-    author: "Sarah Chen",
-    role: "CTO",
-    company: "TechFlow Industries",
-  },
-  {
-    quote: "The cybersecurity assessment conducted by NexusIT identified critical vulnerabilities we weren&apos;t aware of. Their team&apos;s expertise is unmatched.",
-    author: "Michael Rodriguez",
-    role: "VP of Operations",
-    company: "GlobalFinance Corp",
-  },
-  {
-    quote: "Working with NexusIT has been a game-changer for our digital transformation journey. They truly understand enterprise-level challenges.",
-    author: "Emily Watson",
-    role: "Director of IT",
-    company: "MedTech Solutions",
-  },
-];
+import { Brain, Rocket, Users, TrendingUp } from "lucide-react";
+import { useLang } from "@/hooks/use-lang";
+
+const en = {
+  label: "Why Choose Us",
+  h2: "What Sets Digital Apex Apart",
+  values: [
+    {
+      icon: Brain,
+      title: "Digital Intelligence",
+      description: "We leverage data, analytics, and AI to extract meaningful insights that empower smarter decisions and drive organizational intelligence at every level.",
+    },
+    {
+      icon: Rocket,
+      title: "Innovation First",
+      description: "Continuous research and exploration of emerging technologies ensure our clients always benefit from the most effective and forward-thinking solutions available.",
+    },
+    {
+      icon: Users,
+      title: "Professional Team",
+      description: "Our 55+ certified IT and accounting professionals bring deep domain expertise, dedication, and a collaborative mindset to every client engagement.",
+    },
+    {
+      icon: TrendingUp,
+      title: "Value Creator",
+      description: "We measure success by the tangible value we create — optimized operations, enhanced customer experiences, and lasting competitive advantage for our partners.",
+    },
+  ],
+};
+
+const mn = {
+  label: "Яагаад биднийг сонгох вэ",
+  h2: "Digital Apex-ийг онцлог болгодог зүйл",
+  values: [
+    {
+      icon: Brain,
+      title: "Дижитал оюун ухаан",
+      description: "Мэдээлэл, аналитик болон хиймэл оюун ухааныг ашиглан илүү ухаалаг шийдвэр гаргахыг дэмжиж, байгууллагын оюун ухааны чадавхыг бүх түвшинд нэмэгдүүлдэг.",
+    },
+    {
+      icon: Rocket,
+      title: "Инноваци тэргүүлэх",
+      description: "Шинэ технологийн тасралтгүй судалгаа, хайгуулаар хэрэглэгчид үргэлж хамгийн үр дүнтэй, ирээдүйтэй шийдлүүдийг хүлээн авдаг.",
+    },
+    {
+      icon: Users,
+      title: "Мэргэжлийн баг",
+      description: "55+ баталгаажсан МТ болон нягтлан бодох бүртгэлийн мэргэжилтэн бүх үйлчлүүлэгчийн ажилд гүн мэдлэг, тууштай байдал, хамтын сэтгэлгээгээр хандана.",
+    },
+    {
+      icon: TrendingUp,
+      title: "Үнэ цэнэ бүтээгч",
+      description: "Амжилтыг бодитоор хэмждэг — үйл ажиллагааг оновчтой болгох, хэрэглэгчийн туршлагыг сайжруулах, хамтрагчиддаа урт хугацааны өрсөлдөх давуу талыг бий болгох.",
+    },
+  ],
+};
 
 export function Testimonials() {
+  const { mn: isMN } = useLang();
+  const t = isMN ? mn : en;
+
   return (
     <section id="testimonials" className="py-24 bg-secondary/30">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="text-center mb-16">
           <p className="text-sm font-medium uppercase tracking-widest text-primary mb-4">
-            Testimonials
+            {t.label}
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl text-balance">
-            Trusted by Industry Leaders
+            {t.h2}
           </h2>
         </div>
-        
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
+
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {t.values.map((value) => (
             <div
-              key={index}
-              className="relative p-8 bg-card border border-border rounded-lg"
+              key={value.title}
+              className="relative p-8 bg-card border border-border rounded-lg transition-all duration-300 hover:border-primary/50"
             >
-              <Quote className="h-8 w-8 text-primary/30 mb-6" />
-              
-              <blockquote className="text-foreground leading-relaxed mb-6">
-                {testimonial.quote}
-              </blockquote>
-              
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                  <span className="text-lg font-semibold text-primary">
-                    {testimonial.author.charAt(0)}
-                  </span>
-                </div>
-                <div>
-                  <p className="font-medium text-foreground">{testimonial.author}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {testimonial.role}, {testimonial.company}
-                  </p>
-                </div>
+              <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary mb-6">
+                <value.icon className="h-7 w-7" />
               </div>
+              <h3 className="text-lg font-semibold text-foreground mb-3">{value.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
             </div>
           ))}
         </div>

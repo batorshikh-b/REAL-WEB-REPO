@@ -6,15 +6,26 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { useLang } from "@/hooks/use-lang";
 
-const navigation = [
-  { name: "Services", href: "#services" },
-  { name: "Why Us", href: "#about" },
-  { name: "FAQ", href: "#process" },
-];
+const navItems = {
+  en: [
+    { name: "Services", href: "#services" },
+    { name: "Why Us", href: "#about" },
+    { name: "FAQ", href: "#process" },
+  ],
+  mn: [
+    { name: "Үйлчилгээ", href: "#services" },
+    { name: "Бидний тухай", href: "#about" },
+    { name: "Түгээмэл асуулт", href: "#process" },
+  ],
+};
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { mn: isMN } = useLang();
+  const navigation = isMN ? navItems.mn : navItems.en;
+  const contactLabel = isMN ? "Холбоо барих" : "Contact Us";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
@@ -57,20 +68,20 @@ export function Navbar() {
         
         <div className="hidden lg:flex lg:items-center lg:gap-x-8">
           {navigation.map((item) => (
-            <Link
+            <GlassButton
               key={item.name}
-              href={item.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              size="sm"
+              onClick={() => document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" })}
             >
               {item.name}
-            </Link>
+            </GlassButton>
           ))}
         </div>
         
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-3">
           <ThemeToggle />
           <GlassButton size="sm" onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}>
-            Contact Us
+            {contactLabel}
           </GlassButton>
         </div>
       </nav>
@@ -79,22 +90,22 @@ export function Navbar() {
       {mobileMenuOpen && (
         <div className="lg:hidden mt-2">
           <div className="mx-auto max-w-4xl bg-white/95 dark:bg-neutral-900/95 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 dark:border-white/10 px-6 py-4">
-            <div className="space-y-1">
+            <div className="flex flex-col gap-2">
               {navigation.map((item) => (
-                <Link
+                <GlassButton
                   key={item.name}
-                  href={item.href}
-                  className="block rounded-lg px-3 py-2 text-base font-medium text-muted-foreground hover:bg-secondary hover:text-foreground"
-                  onClick={() => setMobileMenuOpen(false)}
+                  size="sm"
+                  className="w-full"
+                  onClick={() => { setMobileMenuOpen(false); document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" }); }}
                 >
                   {item.name}
-                </Link>
+                </GlassButton>
               ))}
             </div>
             <div className="pt-4 flex items-center gap-4 border-t border-border mt-4">
               <ThemeToggle />
               <GlassButton size="sm" className="flex-1" onClick={() => { setMobileMenuOpen(false); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}>
-                Contact Us
+                {contactLabel}
               </GlassButton>
             </div>
           </div>

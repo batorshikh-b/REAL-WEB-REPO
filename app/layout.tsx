@@ -15,18 +15,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'NexusIT | Strategic IT Consulting Services',
-  description: 'Transform your business with expert IT consulting services. We specialize in cloud solutions, cybersecurity, digital transformation, and enterprise software development.',
-  keywords: ['IT consulting', 'cloud solutions', 'cybersecurity', 'digital transformation', 'enterprise software', 'technology consulting'],
+  title: 'Digital Apex | IT & Accounting Services',
+  description: 'Digital Apex combines digital intelligence with digital transformation to optimize operations and enhance customer experiences in Mongolia.',
+  keywords: ['IT consulting', 'digital transformation', 'software development', 'network security', 'cloud services', 'accounting services', 'Mongolia'],
   openGraph: {
-    title: 'NexusIT | Strategic IT Consulting Services',
-    description: 'Transform your business with expert IT consulting services.',
+    title: 'Digital Apex | IT & Accounting Services',
+    description: 'Combining digital intelligence with digital transformation to optimize operations and enhance customer experiences.',
     type: 'website',
   },
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0ea5e9',
+  themeColor: '#6366f1',
   width: 'device-width',
   initialScale: 1,
 }
