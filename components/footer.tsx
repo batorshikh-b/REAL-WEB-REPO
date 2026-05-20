@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Linkedin, Facebook } from "lucide-react";
 import { useLang } from "@/hooks/use-lang";
 
 const en = {
   tagline: "Combining digital intelligence with digital transformation to optimize operations and enhance customer experiences.",
-  brand: "Make things D1G1T@L1ZED",
+  brand: "Digital Solutions",
   servicesHeader: "Services",
   companyHeader: "Company",
   copyright: "Digital Apex. All rights reserved.",
@@ -18,7 +19,7 @@ const en = {
   ],
   company: [
     { name: "About Us", href: "#about" },
-    { name: "FAQ", href: "#process" },
+    { name: "Values", href: "#values" },
     { name: "Contact", href: "#contact" },
   ],
   privacy: "Privacy Policy",
@@ -27,7 +28,7 @@ const en = {
 
 const mn = {
   tagline: "Дижитал оюун ухаан болон дижитал хувиргалтыг хослуулан үйл ажиллагааг оновчтой болгож, хэрэглэгчийн туршлагыг сайжруулдаг.",
-  brand: "Бүгдийг ДИЖИТАЛЧИЛЪЯ",
+  brand: "Дижитал шийдэл",
   servicesHeader: "Үйлчилгээ",
   companyHeader: "Компани",
   copyright: "Digital Apex. Бүх эрх хуулиар хамгаалагдсан.",
@@ -39,7 +40,7 @@ const mn = {
   ],
   company: [
     { name: "Бидний тухай", href: "#about" },
-    { name: "Түгээмэл асуулт", href: "#process" },
+    { name: "Үнэ цэнэ", href: "#values" },
     { name: "Холбоо барих", href: "#contact" },
   ],
   privacy: "Нууцлалын бодлого",
@@ -60,10 +61,21 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-block">
-              <span className="text-xl font-bold tracking-tight text-foreground">
-                Digital<span className="text-primary">Apex</span>
-              </span>
+            <Link href="/" className="inline-block" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+              <Image
+                src="/logo-light.png"
+                alt="Digital Apex"
+                width={160}
+                height={48}
+                className="h-12 w-auto object-contain dark:hidden"
+              />
+              <Image
+                src="/logo-dark.png"
+                alt="Digital Apex"
+                width={160}
+                height={48}
+                className="h-12 w-auto object-contain hidden dark:block"
+              />
             </Link>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs leading-relaxed">
               {t.tagline}

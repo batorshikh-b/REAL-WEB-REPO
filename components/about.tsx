@@ -1,6 +1,7 @@
 "use client";
 
 import { CheckCircle2 } from "lucide-react";
+import { motion } from "motion/react";
 import { useLang } from "@/hooks/use-lang";
 
 const en = {
@@ -28,7 +29,7 @@ const mn = {
   h2line1: "Таны найдвартай түнш",
   h2line2: "Дижитал хувиргалтад",
   p1: "Дижитал Апекс нь дижитал оюун ухаан болон дижитал хувиргалтыг хослуулан үйл ажиллагааг оновчтой болгож, хэрэглэгчийн туршлагыг сайжруулдаг — динамик дижитал орчинд байгууллагын хөгжлийг хурдасгадаг.",
-  p2: "МТ болон нягтлан бодох бүртгэлийн мэргэжилтэн баг таны байгууллагатай хамтран ажиллаж, бизнесийн зорилгод нийцсэн тусгай шийдлүүдийг боловсруулж, тэмдэглэгдэхүйц болон удаан эдэлгээтэй үнэ цэнийг бүтээдэг.",
+  p2: "МТ-ийн мэргэжилтэн баг таны байгууллагатай хамтран ажиллаж, бизнесийн зорилгод нийцсэн тусгай шийдлүүдийг боловсруулж, тэмдэглэгдэхүйц болон удаан эдэлгээтэй үнэ цэнийг бүтээдэг.",
   highlights: [
     "Дижитал оюун ухаанд суурилсан шийдэл",
     "Эхнээс эцэс хүртэлх дижитал хувиргалт",
@@ -48,10 +49,15 @@ export function About() {
   const t = isMN ? mn : en;
 
   return (
-    <section id="about" className="py-24 bg-secondary/30">
+    <section id="about" className="py-24 bg-secondary/30" style={{ contentVisibility: "auto", containIntrinsicSize: "0 700px" }}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24 items-center">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
             <p className="text-sm font-medium uppercase tracking-widest text-primary mb-4">
               {t.label}
             </p>
@@ -72,9 +78,15 @@ export function About() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="relative">
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+          >
             <div className="aspect-square rounded-2xl bg-card border border-border overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent" />
               <div className="absolute inset-0 opacity-20">
@@ -103,7 +115,7 @@ export function About() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

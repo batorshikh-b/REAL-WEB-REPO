@@ -5,6 +5,7 @@ import {
   Cloud, Lightbulb, ClipboardList, ShieldCheck, RefreshCw, BarChart3, ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
+import { motion } from "motion/react";
 import { useLang } from "@/hooks/use-lang";
 
 const icons = [Code, Network, Database, FlaskConical, HeadphonesIcon, Cloud, Lightbulb, ClipboardList, ShieldCheck, RefreshCw, BarChart3];
@@ -36,9 +37,9 @@ const mn = {
   learnMore: "Дэлгэрэнгүй",
   services: [
     { title: "Програм хангамж хөгжүүлэлт & дэмжлэг", description: "Байгууллагын тусгай програм хангамж, системийн интеграци болон дижитал бүтээгдэхүүнийг тасралтгүй ажиллуулах засвар үйлчилгээ." },
-    { title: "Сүлжээний удирдлага & аюулгүй байдал", description: "Найдвартай сүлжээний дэд бүтцийг зохион бүтээх, хэрэгжүүлэх, тасралтгүй хянах — дэвшилтэт аюул илрүүлэх, урьдчилан сэргийлэх." },
-    { title: "Өгөгдлийн удирдлага", description: "Хадгалалтаас эхлэн боловсруулалт, засаглал болон аналитик хүртэлх өгөгдлийн амьдралын мөчлөгийн бүрэн удирдлага — өгөгдлийг стратегийн хөрөнгө болгох." },
-    { title: "Судалгаа & хөгжүүлэлт", description: "Гарч буй технологиудыг судалж, таны салбарын өвөрмөц сорилт, боломжид нийцсэн инноватив шийдлүүдийг боловсруулах." },
+    { title: "Сүлжээний удирдлага & аюулгүй байдал", description: "Найдвартай сүлжээний дэд бүтцийг зохион бүтээх, хэрэгжүүлэх, тасралтгүй хянах — аюулаас урьдчилан сэргийлэх." },
+    { title: "Өгөгдлийн удирдлага", description: "Хадгалалт, боловсруулалт, аналитик зэрэг өгөгдлийн бүхий л үе шатыг хамарсан иж бүрэн шийдэл — танай байгууллагын өгөгдлийг стратегийн хөрөнгө болгоно." },
+    { title: "Судалгаа & хөгжүүлэлт", description: "Гарч буй технологиудыг судалж, таны салбарт тохирсон, боломжид нийцсэн инноватив шийдлүүдийг боловсруулах." },
     { title: "Хэрэглэгчийн дэмжлэг", description: "Хариу цагтай техникийн дэмжлэг, туслах ширээний үйлчилгээ — багийн бүтээмжийг тасалдалгүйгээр хангах." },
     { title: "Клауд & өгөгдлийн төвийн үйлчилгээ", description: "Тэргүүлэгч платформ дээр клауд руу шилжих, дэд бүтцийг оновчтой болгох, өгөгдлийн төвийн удирдлага — хамгийн их уян хатан байдлын төлөө." },
     { title: "МТ зөвлөх & стратеги", description: "Технологийн хөрөнгө оруулалтыг бизнесийн зорилготой уялдуулж, өсөлт болон үйл ажиллагааны үр ашгийг дэмжих мэргэжлийн зөвлөх үйлчилгээ." },
@@ -54,9 +55,15 @@ export function Services() {
   const t = isMN ? mn : en;
 
   return (
-    <section id="services" className="py-24 bg-background">
+    <section id="services" className="py-24 bg-background" style={{ contentVisibility: "auto", containIntrinsicSize: "0 800px" }}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mb-16">
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           <p className="text-sm font-medium uppercase tracking-widest text-primary mb-4">
             {t.label}
           </p>
@@ -65,14 +72,21 @@ export function Services() {
             <br />
             <span className="text-muted-foreground">{t.h2line2}</span>
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.05 }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.07 } } }}
+        >
           {t.services.map((service, index) => {
             const Icon = icons[index];
             return (
-              <div
+              <motion.div
                 key={service.title}
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } }}
                 className="group relative p-8 bg-card border border-border rounded-lg transition-all duration-300 hover:border-primary/50 hover:bg-secondary/50"
               >
                 <div className="flex items-start gap-4">
@@ -93,10 +107,10 @@ export function Services() {
                   {t.learnMore}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

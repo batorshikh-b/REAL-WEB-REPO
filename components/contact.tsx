@@ -1,7 +1,10 @@
 "use client";
 
 import { Mail, Phone, Globe } from "lucide-react";
+import { motion } from "motion/react";
 import { useLang } from "@/hooks/use-lang";
+import { LampContainer } from "@/components/ui/lamp";
+import { AnimatedBadge } from "@/components/ui/animated-badge";
 
 const en = {
   label: "Contact Us",
@@ -28,23 +31,35 @@ export function Contact() {
   const t = isMN ? mn : en;
 
   return (
-    <section id="contact" className="py-24 bg-background">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <p className="text-sm font-medium uppercase tracking-widest text-primary mb-4">
-            {t.label}
-          </p>
+    <section id="contact">
+      <LampContainer>
+        {/* Label + Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35, duration: 0.8, ease: "easeInOut" }}
+          className="text-center mb-12"
+        >
+          <div className="flex justify-center mb-4 scale-125">
+            <AnimatedBadge text={t.label} color="#6366f1" />
+          </div>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl text-balance">
             {t.h2line1}
             <br />
             <span className="text-muted-foreground">{t.h2line2}</span>
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+          <p className="mt-6 text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
             {t.description}
           </p>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
+        {/* Contact items */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.55, duration: 0.8, ease: "easeInOut" }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-8"
+        >
           <div className="flex items-start gap-4">
             <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0">
               <Mail className="h-5 w-5" />
@@ -78,8 +93,8 @@ export function Contact() {
               <p className="text-muted-foreground">www.digitalapex.mn</p>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </LampContainer>
     </section>
   );
 }

@@ -6,18 +6,19 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { LangToggle } from "@/components/ui/lang-toggle";
 import { useLang } from "@/hooks/use-lang";
 
 const navItems = {
   en: [
     { name: "Services", href: "#services" },
     { name: "Why Us", href: "#about" },
-    { name: "FAQ", href: "#process" },
+    { name: "Values", href: "#values" },
   ],
   mn: [
     { name: "Үйлчилгээ", href: "#services" },
     { name: "Бидний тухай", href: "#about" },
-    { name: "Түгээмэл асуулт", href: "#process" },
+    { name: "Үнэ цэнэ", href: "#values" },
   ],
 };
 
@@ -29,9 +30,9 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
-      <nav className="mx-auto flex max-w-4xl items-center justify-between px-6 py-3 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md rounded-full shadow-lg shadow-black/5 dark:shadow-black/20 border border-white/20 dark:border-white/10">
+      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-3 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md rounded-full shadow-lg shadow-black/5 dark:shadow-black/20 border border-white/20 dark:border-white/10">
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
             {/* Dark mode logo - full logo with white text */}
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/da_white1-v6PC8CfucMqVzpOmSM7DTZ2TZvxgGV.png"
@@ -66,7 +67,7 @@ export function Navbar() {
           </button>
         </div>
         
-        <div className="hidden lg:flex lg:items-center lg:gap-x-8">
+        <div className="hidden lg:flex lg:items-center lg:gap-x-8 lg:px-8">
           {navigation.map((item) => (
             <GlassButton
               key={item.name}
@@ -79,6 +80,7 @@ export function Navbar() {
         </div>
         
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-3">
+          <LangToggle />
           <ThemeToggle />
           <GlassButton size="sm" onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}>
             {contactLabel}
@@ -103,6 +105,7 @@ export function Navbar() {
               ))}
             </div>
             <div className="pt-4 flex items-center gap-4 border-t border-border mt-4">
+              <LangToggle />
               <ThemeToggle />
               <GlassButton size="sm" className="flex-1" onClick={() => { setMobileMenuOpen(false); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}>
                 {contactLabel}

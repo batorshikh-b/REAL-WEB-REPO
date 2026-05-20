@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
+import { LangProvider } from '@/contexts/lang-context'
 import './globals.css'
 
 const geistSans = Geist({ 
@@ -15,11 +16,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Digital Apex | IT & Accounting Services',
+  title: 'Digital Apex',
   description: 'Digital Apex combines digital intelligence with digital transformation to optimize operations and enhance customer experiences in Mongolia.',
   keywords: ['IT consulting', 'digital transformation', 'software development', 'network security', 'cloud services', 'accounting services', 'Mongolia'],
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
   openGraph: {
-    title: 'Digital Apex | IT & Accounting Services',
+    title: 'Digital Apex',
     description: 'Combining digital intelligence with digital transformation to optimize operations and enhance customer experiences.',
     type: 'website',
   },
@@ -37,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background scroll-smooth" suppressHydrationWarning>
+    <html lang="mn" className="bg-background scroll-smooth" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
@@ -45,7 +50,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <LangProvider>
+            {children}
+          </LangProvider>
         </ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

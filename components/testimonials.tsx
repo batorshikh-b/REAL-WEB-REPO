@@ -1,6 +1,7 @@
 "use client";
 
 import { Brain, Rocket, Users, TrendingUp } from "lucide-react";
+import { motion } from "motion/react";
 import { useLang } from "@/hooks/use-lang";
 
 const en = {
@@ -64,19 +65,32 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="py-24 bg-secondary/30">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           <p className="text-sm font-medium uppercase tracking-widest text-primary mb-4">
             {t.label}
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl text-balance">
             {t.h2}
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <motion.div
+          className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+        >
           {t.values.map((value) => (
-            <div
+            <motion.div
               key={value.title}
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } }}
               className="relative p-8 bg-card border border-border rounded-lg transition-all duration-300 hover:border-primary/50"
             >
               <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary mb-6">
@@ -84,9 +98,9 @@ export function Testimonials() {
               </div>
               <h3 className="text-lg font-semibold text-foreground mb-3">{value.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
