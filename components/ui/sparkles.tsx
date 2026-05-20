@@ -25,7 +25,7 @@ type SparklesProps = {
 export function Sparkles({
   className,
   color = "#6366f1",
-  density = 800,
+  density = 320,
   size = 1,
   speed = 1,
   opacity = 1,
@@ -44,27 +44,33 @@ export function Sparkles({
     let animationId: number;
     const particles: Particle[] = [];
     let lastFrame = 0;
-    const TARGET_FPS = 30;
+    const TARGET_FPS = 20;
     const FRAME_INTERVAL = 1000 / TARGET_FPS;
+    let isVisible = true;
 
     let resizeTimer: ReturnType<typeof setTimeout>;
     const resize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        canvas.width = Math.floor(canvas.offsetWidth * dpr);
+        canvas.height = Math.floor(canvas.offsetHeight * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       }, 150);
     };
 
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    canvas.width = Math.floor(canvas.offsetWidth * dpr);
+    canvas.height = Math.floor(canvas.offsetHeight * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     window.addEventListener("resize", resize);
 
-    const count = Math.floor((canvas.width * canvas.height) / (800000 / density));
+    const area = canvas.offsetWidth * canvas.offsetHeight;
+    const count = Math.min(220, Math.floor((area * density) / 800000));
     for (let i = 0; i < count; i++) {
       particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
+        x: Math.random() * canvas.offsetWidth,
+        y: Math.random() * canvas.offsetHeight,
         size: Math.random() * size + size / 2.5,
         opacity: Math.random() * opacity,
         speed: (Math.random() * 0.5 + 0.1) * speed,
@@ -80,12 +86,14 @@ export function Sparkles({
     const animate = (timestamp: number) => {
       animationId = requestAnimationFrame(animate);
 
+      if (!isVisible || document.hidden) return;
+
       // Throttle to TARGET_FPS
       if (timestamp - lastFrame < FRAME_INTERVAL) return;
       lastFrame = timestamp;
       frameCount++;
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
@@ -103,10 +111,10 @@ export function Sparkles({
         p.x += Math.cos(p.direction) * p.speed * 0.3;
         p.y += Math.sin(p.direction) * p.speed * 0.3;
 
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
+        if (p.x < 0) p.x = canvas.offsetWidth;
+        if (p.x > canvas.offsetWidth) p.x = 0;
+        if (p.y < 0) p.y = canvas.offsetHeight;
+        if (p.y > canvas.offsetHeight) p.y = 0;
 
         ctx.globalAlpha = p.opacity;
         ctx.beginPath();
@@ -118,9 +126,15 @@ export function Sparkles({
       ctx.globalAlpha = 1;
     };
 
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+    }, { threshold: 0 });
+    observer.observe(canvas);
+
     animationId = requestAnimationFrame(animate);
     return () => {
       cancelAnimationFrame(animationId);
+      observer.disconnect();
       clearTimeout(resizeTimer);
       window.removeEventListener("resize", resize);
     };

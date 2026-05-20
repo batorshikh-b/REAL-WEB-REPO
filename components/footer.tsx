@@ -114,11 +114,11 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-            <div className="mt-6 space-y-1">
-              <p className="text-xs text-muted-foreground">info@digitalapex.mn</p>
+            {/*<div className="mt-6 space-y-1">
+              <p className="text-xs text-muted-foreground">info@digitalapex.m</p>
               <p className="text-xs text-muted-foreground">+976 7777 5335</p>
               <p className="text-xs text-muted-foreground">www.digitalapex.mn</p>
-            </div>
+            </div>*/}
           </div>
         </div>
 

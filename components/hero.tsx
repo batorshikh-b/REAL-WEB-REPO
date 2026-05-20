@@ -20,10 +20,10 @@ const en = {
   cta1: "Start Your Journey",
   cta2: "Explore Services",
   stats: [
-    { value: "5+", label: "Years Experience" },
-    { value: "10+", label: "Partners" },
+    { value: "20+", label: "Years Experience" },
+    { value: "15+", label: "Partners" },
     { value: "10+", label: "Ongoing Projects" },
-    { value: "55+", label: "Team Members" },
+    { value: "20", label: "Team Members" },
   ],
 };
 
@@ -36,9 +36,9 @@ const mn = {
   cta2: "Үйлчилгээг үзэх",
   stats: [
     { value: "20+", label: "Жилийн туршлага" },
-    { value: "20+", label: "Харилцагчид" },
+    { value: "15+", label: "Харилцагчид" },
     { value: "10+", label: "Идэвхтэй төслүүд" },
-    { value: "65+", label: "Багийн гишүүд" },
+    { value: "20", label: "Багийн гишүүд" },
   ],
 };
 

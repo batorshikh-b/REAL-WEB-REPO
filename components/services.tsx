@@ -1,7 +1,6 @@
 "use client";
 
-import { HeadphonesIcon, Network, Database, ShieldCheck, Code, ClipboardList, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { HeadphonesIcon, Network, Database, ShieldCheck, Code, ClipboardList } from "lucide-react";
 import { motion } from "motion/react";
 import { useLang } from "@/hooks/use-lang";
 
@@ -18,7 +17,6 @@ const en = {
   label: "Our Services",
   h2line1: "What We Do",
   h2line2: "For Your Organization",
-  learnMore: "Learn more",
   services: [
     {
       title: "IT Helpdesk & Support Services",
@@ -48,10 +46,7 @@ const en = {
 };
 
 const mn = {
-  label: "Бидний үйлчилгээ",
-  h2line1: "Бидний хийдэг зүйл",
-  h2line2: "Таны байгууллагад",
-  learnMore: "Дэлгэрэнгүй",
+  h2line1: "Бидний үйлчилгээ",
   services: [
     {
       title: "IT Helpdesk буюу мэдээллийн технологийн дэмжлэг үйлчилгээ",
@@ -93,7 +88,7 @@ export function Services() {
     <section id="services" className="py-24 bg-background" style={{ contentVisibility: "auto", containIntrinsicSize: "0 700px" }}>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
-          className="mb-16"
+          className="mb-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -127,15 +122,7 @@ export function Services() {
                 <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary mb-6">
                   <Icon className="h-7 w-7" />
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-3 leading-snug">{service.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
-                <Link
-                  href="#contact"
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0"
-                >
-                  {t.learnMore}
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+                <h3 className="text-lg font-semibold text-foreground leading-snug">{service.title}</h3>
               </motion.div>
             );
           })}

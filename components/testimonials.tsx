@@ -33,7 +33,7 @@ const en = {
 
 const mn = {
   label: "Яагаад биднийг сонгох вэ",
-  h2: "Digital Apex-ийг онцлог болгодог зүйл",
+  h2: "Үнэ цэнэ",
   values: [
     {
       icon: Brain,

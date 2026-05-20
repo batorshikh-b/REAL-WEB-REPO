@@ -12,13 +12,13 @@ import { useLang } from "@/hooks/use-lang";
 const navItems = {
   en: [
     { name: "Services", href: "#services" },
-    { name: "Why Us", href: "#about" },
-    { name: "Values", href: "#values" },
+    { name: "Values", href: "#testimonials" },
+    { name: "Contact Us", href: "#contact" },
   ],
   mn: [
     { name: "Үйлчилгээ", href: "#services" },
-    { name: "Бидний тухай", href: "#about" },
-    { name: "Үнэ цэнэ", href: "#values" },
+    { name: "Үнэ цэнэ", href: "#testimonials" },
+    { name: "Холбоо барих", href: "#contact" },
   ],
 };
 
@@ -26,27 +26,26 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { mn: isMN } = useLang();
   const navigation = isMN ? navItems.mn : navItems.en;
-  const contactLabel = isMN ? "Холбоо барих" : "Contact Us";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-3 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md rounded-full shadow-lg shadow-black/5 dark:shadow-black/20 border border-white/20 dark:border-white/10">
+      <nav className="mx-auto flex max-w-4xl items-center justify-between px-5 py-3 bg-white/90 dark:bg-neutral-900/90 sm:backdrop-blur-sm rounded-full shadow-md shadow-black/5 dark:shadow-black/20 border border-white/20 dark:border-white/10">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            {/* Dark mode logo - full logo with white text */}
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/da_white1-v6PC8CfucMqVzpOmSM7DTZ2TZvxgGV.png"
+              src="/logo-dark.png"
               alt="Digital Apex Logo"
               width={140}
-              height={32}
+              height={40}
+              priority
               className="h-8 w-auto hidden dark:block"
             />
-            {/* Light mode logo - geometric blue shapes */}
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/da-old-4wpM0jd1A4XJ1glWlTVx9iDWFvKkRQ.png"
+              src="/logo-light.png"
               alt="Digital Apex Logo"
-              width={80}
-              height={32}
+              width={140}
+              height={40}
+              priority
               className="h-8 w-auto dark:hidden"
             />
           </Link>
@@ -67,7 +66,7 @@ export function Navbar() {
           </button>
         </div>
         
-        <div className="hidden lg:flex lg:items-center lg:gap-x-8 lg:px-8">
+        <div className="hidden lg:flex lg:items-center lg:gap-x-3 lg:px-8">
           {navigation.map((item) => (
             <GlassButton
               key={item.name}
@@ -82,9 +81,6 @@ export function Navbar() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-3">
           <LangToggle />
           <ThemeToggle />
-          <GlassButton size="sm" onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}>
-            {contactLabel}
-          </GlassButton>
         </div>
       </nav>
       
@@ -107,9 +103,6 @@ export function Navbar() {
             <div className="pt-4 flex items-center gap-4 border-t border-border mt-4">
               <LangToggle />
               <ThemeToggle />
-              <GlassButton size="sm" className="flex-1" onClick={() => { setMobileMenuOpen(false); document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" }); }}>
-                {contactLabel}
-              </GlassButton>
             </div>
           </div>
         </div>
