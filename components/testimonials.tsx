@@ -99,7 +99,7 @@ export function Testimonials() {
         </motion.div>
 
         {/* Cards + Image — same row */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
           {/* Left: 2x2 cards */}
           <motion.div
@@ -127,7 +127,7 @@ export function Testimonials() {
             ))}
           </motion.div>
 
-          {/* Right: image aligned to top of cards */}
+          {/* Right: image centered vertically */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, x: 40 }}
@@ -141,7 +141,7 @@ export function Testimonials() {
                 alt="IT Monitoring"
                 width={1000}
                 height={750}
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-cover"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
