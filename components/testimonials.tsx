@@ -33,7 +33,7 @@ const en = {
 
 const mn = {
   label: "Яагаад биднийг сонгох вэ",
-  h2: "Үнэ цэнэ",
+  h2: "Бидний тухай",
   values: [
     {
       icon: Brain,

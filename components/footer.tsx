@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Linkedin, Facebook } from "lucide-react";
 import { useLang } from "@/hooks/use-lang";
+import { LocationMap } from "@/components/ui/expand-map";
 
 const en = {
   tagline: "Combining digital intelligence with digital transformation to optimize operations and enhance customer experiences.",
@@ -59,7 +60,7 @@ export function Footer() {
   return (
     <footer className="bg-card border-t border-border">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
               <Image
@@ -114,11 +115,13 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-            {/*<div className="mt-6 space-y-1">
-              <p className="text-xs text-muted-foreground">info@digitalapex.m</p>
-              <p className="text-xs text-muted-foreground">+976 7777 5335</p>
-              <p className="text-xs text-muted-foreground">www.digitalapex.mn</p>
-            </div>*/}
+          </div>
+
+          <div className="flex items-start pt-1">
+            <LocationMap
+              location={isMN ? "Улаанбаатар, MN Tower" : "Ulaanbaatar, MN Tower"}
+              coordinates="П.Гэндэнгийн гудамж шонхор, СБД - 1 хороо, Улаанбаатар 14241"
+            />
           </div>
         </div>
 
