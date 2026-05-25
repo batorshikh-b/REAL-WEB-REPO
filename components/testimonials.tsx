@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Brain, Rocket, Users, TrendingUp } from "lucide-react";
 import { motion } from "motion/react";
 import { useLang } from "@/hooks/use-lang";
@@ -7,26 +8,32 @@ import { useLang } from "@/hooks/use-lang";
 const en = {
   label: "Why Choose Us",
   h2: "What Sets Digital Apex Apart",
+  description:
+    "We combine deep IT expertise with a client-first mindset to deliver reliable, scalable solutions that grow with your business.",
   values: [
     {
       icon: Brain,
       title: "Digital Intelligence",
-      description: "We leverage data, analytics, and AI to extract meaningful insights that empower smarter decisions and drive organizational intelligence at every level.",
+      description:
+        "We leverage data, analytics, and AI to extract meaningful insights that empower smarter decisions.",
     },
     {
       icon: Rocket,
       title: "Innovation First",
-      description: "Continuous research and exploration of emerging technologies ensure our clients always benefit from the most effective and forward-thinking solutions available.",
+      description:
+        "Continuous research into emerging technologies ensures our clients always benefit from forward-thinking solutions.",
     },
     {
       icon: Users,
       title: "Professional Team",
-      description: "Our 55+ certified IT and accounting professionals bring deep domain expertise, dedication, and a collaborative mindset to every client engagement.",
+      description:
+        "Our certified IT professionals bring deep domain expertise and a collaborative mindset to every engagement.",
     },
     {
       icon: TrendingUp,
       title: "Value Creator",
-      description: "We measure success by the tangible value we create — optimized operations, enhanced customer experiences, and lasting competitive advantage for our partners.",
+      description:
+        "We measure success by the tangible value we create — optimized operations and lasting competitive advantage.",
     },
   ],
 };
@@ -34,26 +41,32 @@ const en = {
 const mn = {
   label: "Яагаад биднийг сонгох вэ",
   h2: "Бидний тухай",
+  description:
+    "Бид мэргэжлийн IT мэдлэг болон хэрэглэгч төвтэй хандлагыг хослуулан бизнесийн өсөлтийг дэмжих найдвартай, уян хатан шийдлүүдийг хэрэгжүүлдэг.",
   values: [
     {
       icon: Brain,
-      title: "Дижитал оюун ухаан",
-      description: "Мэдээлэл, аналитик болон хиймэл оюун ухааныг ашиглан илүү ухаалаг шийдвэр гаргахыг дэмжиж, байгууллагын оюун ухааны чадавхыг бүх түвшинд нэмэгдүүлдэг.",
+      title: "Аюулгүй, найдвартай шийдэл",
+      description:
+        "Байгууллагын мэдээлэл, систем, дэд бүтцийг хамгаалах бодлого, тохиргоо, хяналтыг цогцоор хэрэгжүүлнэ.",
     },
     {
       icon: Rocket,
-      title: "Инноваци тэргүүлэх",
-      description: "Шинэ технологийн тасралтгүй судалгаа, хайгуулаар хэрэглэгчид үргэлж хамгийн үр дүнтэй, ирээдүйтэй шийдлүүдийг хүлээн авдаг.",
+      title: "Шуурхай дэмжлэг үйлчилгээ",
+      description:
+        "Техникийн асуудлыг хурдан оношлон шийдвэрлэж, байгууллагын өдөр тутмын үйл ажиллагааг тасалдуулахгүй байхад анхаарна.",
     },
     {
       icon: Users,
-      title: "Мэргэжлийн баг",
-      description: "55+ баталгаажсан МТ болон нягтлан бодох бүртгэлийн мэргэжилтэн бүх үйлчлүүлэгчийн ажилд гүн мэдлэг, тууштай байдал, хамтын сэтгэлгээгээр хандана.",
+      title: "Мэргэжлийн IT баг",
+      description:
+        "Сүлжээ, сервер, систем болон мэдээллийн аюулгүй байдлын чиглэлээр байгууллагын хэрэгцээнд нийцсэн шийдэл боловсруулна.",
     },
     {
       icon: TrendingUp,
-      title: "Үнэ цэнэ бүтээгч",
-      description: "Амжилтыг бодитоор хэмждэг — үйл ажиллагааг оновчтой болгох, хэрэглэгчийн туршлагыг сайжруулах, хамтрагчиддаа урт хугацааны өрсөлдөх давуу талыг бий болгох.",
+      title: "Бизнесийн өсөлтийг дэмжих технологи",
+      description:
+        "Клауд, автоматжуулалт, дата-д суурилсан шийдлээр байгууллагын ирээдүйн өсөлтөд бэлэн орчин бүрдүүлнэ.",
     },
   ],
 };
@@ -63,44 +76,77 @@ export function Testimonials() {
   const t = isMN ? mn : en;
 
   return (
-    <section id="testimonials" className="py-24 bg-secondary/30">
+    <section id="testimonials" className="py-24 bg-secondary/30 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
-          <p className="text-sm font-medium uppercase tracking-widest text-primary mb-4">
-            {t.label}
-          </p>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl text-balance">
-            {t.h2}
-          </h2>
-        </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-        <motion.div
-          className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
-        >
-          {t.values.map((value) => (
+          {/* Left: text content */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            <p className="text-sm font-medium uppercase tracking-widest text-primary mb-4">
+              {t.label}
+            </p>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl text-balance mb-6">
+              {t.h2}
+            </h2>
+            <p className="text-muted-foreground text-base leading-relaxed mb-12 max-w-lg">
+              {t.description}
+            </p>
+
             <motion.div
-              key={value.title}
-              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } } }}
-              className="relative p-8 bg-card border border-border rounded-lg transition-all duration-300 hover:border-primary/50"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+              variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
             >
-              <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary mb-6">
-                <value.icon className="h-7 w-7" />
-              </div>
-              <h3 className="text-lg font-semibold text-foreground mb-3">{value.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{value.description}</p>
+              {t.values.map((value) => (
+                <motion.div
+                  key={value.title}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+                  }}
+                  className="p-6 bg-card border border-border rounded-xl hover:border-primary/50 transition-colors duration-300"
+                >
+                  <div className="flex items-center justify-center w-11 h-11 rounded-lg bg-primary/10 text-primary mb-4">
+                    <value.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground mb-2">{value.title}</h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{value.description}</p>
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
-        </motion.div>
+          </motion.div>
+
+          {/* Right: image */}
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/20 dark:shadow-black/50 border border-border">
+              <Image
+                src="/monitoring.jpg"
+                alt="IT Monitoring"
+                width={800}
+                height={600}
+                className="w-full h-auto object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+            </div>
+            {/* Decorative blur blob */}
+            <div className="absolute -z-10 -bottom-10 -right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );
