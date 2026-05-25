@@ -78,54 +78,58 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="py-24 bg-secondary/30 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-          {/* Left: text content */}
+        {/* Heading — full width */}
+        <motion.div
+          className="mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
+          <p className="text-sm font-medium uppercase tracking-widest text-primary mb-4">
+            {t.label}
+          </p>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl text-balance mb-4">
+            {t.h2}
+          </h2>
+          <p className="text-muted-foreground text-base leading-relaxed max-w-xl">
+            {t.description}
+          </p>
+        </motion.div>
+
+        {/* Cards + Image — same row */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+
+          {/* Left: 2x2 cards */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
           >
-            <p className="text-sm font-medium uppercase tracking-widest text-primary mb-4">
-              {t.label}
-            </p>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl text-balance mb-6">
-              {t.h2}
-            </h2>
-            <p className="text-muted-foreground text-base leading-relaxed mb-12 max-w-lg">
-              {t.description}
-            </p>
-
-            <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-              variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
-            >
-              {t.values.map((value) => (
-                <motion.div
-                  key={value.title}
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-                  }}
-                  className="p-6 bg-card border border-border rounded-xl hover:border-primary/50 transition-colors duration-300"
-                >
-                  <div className="flex items-center justify-center w-11 h-11 rounded-lg bg-primary/10 text-primary mb-4">
-                    <value.icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="text-sm font-semibold text-foreground mb-2">{value.title}</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{value.description}</p>
-                </motion.div>
-              ))}
-            </motion.div>
+            {t.values.map((value) => (
+              <motion.div
+                key={value.title}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+                }}
+                className="p-6 bg-card border border-border rounded-xl hover:border-primary/50 transition-colors duration-300"
+              >
+                <div className="flex items-center justify-center w-11 h-11 rounded-lg bg-primary/10 text-primary mb-4">
+                  <value.icon className="h-5 w-5" />
+                </div>
+                <h3 className="text-sm font-semibold text-foreground mb-2">{value.title}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">{value.description}</p>
+              </motion.div>
+            ))}
           </motion.div>
 
-          {/* Right: image */}
+          {/* Right: image aligned to top of cards */}
           <motion.div
-            className="relative mt-12 lg:mt-20 lg:scale-110 lg:translate-x-6"
+            className="relative"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -137,12 +141,11 @@ export function Testimonials() {
                 alt="IT Monitoring"
                 width={1000}
                 height={750}
-                className="w-full h-auto object-cover"
+                className="w-full h-full object-cover"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </div>
-            {/* Decorative blur blob */}
             <div className="absolute -z-10 -bottom-10 -right-10 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
           </motion.div>
 
