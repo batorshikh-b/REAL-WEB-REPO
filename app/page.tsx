@@ -13,9 +13,9 @@ export default function Home() {
       <ScrollReset />
       <Navbar />
       <Hero />
-      <Testimonials />
-      <Partners />
       <Services />
+      <Partners />
+      <Testimonials />
       <Contact />
       <Footer />
     </main>
