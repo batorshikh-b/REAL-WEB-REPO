@@ -125,7 +125,7 @@ export function Testimonials() {
 
           {/* Right: image */}
           <motion.div
-            className="relative"
+            className="relative mt-12 lg:mt-20 lg:scale-110 lg:translate-x-6"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -135,15 +135,15 @@ export function Testimonials() {
               <Image
                 src="/monitoring.jpg"
                 alt="IT Monitoring"
-                width={800}
-                height={600}
+                width={1000}
+                height={750}
                 className="w-full h-auto object-cover"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </div>
             {/* Decorative blur blob */}
-            <div className="absolute -z-10 -bottom-10 -right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+            <div className="absolute -z-10 -bottom-10 -right-10 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
           </motion.div>
 
         </div>
