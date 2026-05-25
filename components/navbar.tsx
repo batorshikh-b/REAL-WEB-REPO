@@ -4,20 +4,22 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LangToggle } from "@/components/ui/lang-toggle";
 import { useLang } from "@/hooks/use-lang";
+import { useScroll } from "@/components/ui/use-scroll";
 
 const navItems = {
   en: [
+    { name: "About Us", href: "#testimonials" },
     { name: "Services", href: "#services" },
-    { name: "Values", href: "#testimonials" },
     { name: "Contact Us", href: "#contact" },
   ],
   mn: [
+    { name: "Бидний тухай", href: "#testimonials" },
     { name: "Үйлчилгээ", href: "#services" },
-    { name: "Үнэ цэнэ", href: "#testimonials" },
     { name: "Холбоо барих", href: "#contact" },
   ],
 };
@@ -26,10 +28,18 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { mn: isMN } = useLang();
   const navigation = isMN ? navItems.mn : navItems.en;
+  const scrolled = useScroll(10);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
-      <nav className="mx-auto flex max-w-4xl items-center justify-between px-5 py-3 bg-white/90 dark:bg-neutral-900/90 sm:backdrop-blur-sm rounded-full shadow-md shadow-black/5 dark:shadow-black/20 border border-white/20 dark:border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 transition-all duration-300 ease-out">
+      <nav
+        className={cn(
+          "mx-auto flex items-center justify-between px-5 py-3 rounded-full border transition-all duration-300 ease-out",
+          scrolled
+            ? "max-w-3xl bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl shadow-lg shadow-black/10 dark:shadow-black/30 border-white/30 dark:border-white/15 py-2"
+            : "max-w-4xl bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm shadow-md shadow-black/5 dark:shadow-black/20 border-white/20 dark:border-white/10"
+        )}
+      >
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
             <Image
@@ -50,7 +60,7 @@ export function Navbar() {
             />
           </Link>
         </div>
-        
+
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -65,7 +75,7 @@ export function Navbar() {
             )}
           </button>
         </div>
-        
+
         <div className="hidden lg:flex lg:items-center lg:gap-x-3 lg:px-8">
           {navigation.map((item) => (
             <GlassButton
@@ -77,13 +87,13 @@ export function Navbar() {
             </GlassButton>
           ))}
         </div>
-        
+
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-3">
           <LangToggle />
           <ThemeToggle />
         </div>
       </nav>
-      
+
       {/* Mobile menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden mt-2">
