@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Linkedin, Facebook } from "lucide-react";
 import { useLang } from "@/hooks/use-lang";
 import { LocationMap } from "@/components/ui/expand-map";
 
@@ -13,14 +12,16 @@ const en = {
   companyHeader: "Company",
   copyright: "Digital Apex. All rights reserved.",
   services: [
-    { name: "Software Development", href: "#services" },
-    { name: "Network & Security", href: "#services" },
-    { name: "Cloud & Datacenter", href: "#services" },
-    { name: "Digital Intelligence", href: "#services" },
+    { name: "IT Helpdesk & Support", href: "#services" },
+    { name: "Corporate Network & Maintenance", href: "#services" },
+    { name: "Server Hosting & Datacenter", href: "#services" },
+    { name: "User Data Security", href: "#services" },
+    { name: "System Development Support", href: "#services" },
+    { name: "IT Project Management", href: "#services" },
   ],
   company: [
-    { name: "About Us", href: "#about" },
-    { name: "Values", href: "#values" },
+    { name: "About Us", href: "#testimonials" },
+    { name: "Services", href: "#services" },
     { name: "Contact", href: "#contact" },
   ],
   privacy: "Privacy Policy",
@@ -34,24 +35,21 @@ const mn = {
   companyHeader: "Компани",
   copyright: "Digital Apex. Бүх эрх хуулиар хамгаалагдсан.",
   services: [
-    { name: "Програм хангамж", href: "#services" },
-    { name: "Сүлжээ & аюулгүй байдал", href: "#services" },
-    { name: "Клауд & өгөгдлийн төв", href: "#services" },
-    { name: "Дижитал оюун ухаан", href: "#services" },
+    { name: "IT Helpdesk үйлчилгээ", href: "#services" },
+    { name: "Corporate сүлжээний үйлчилгээ", href: "#services" },
+    { name: "Сервер & Датацентрийн үйлчилгээ", href: "#services" },
+    { name: "Мэдээллийн аюулгүй байдал", href: "#services" },
+    { name: "Систем хөгжүүлэлтийн үйлчилгээ", href: "#services" },
+    { name: "IT төслийн удирдлага", href: "#services" },
   ],
   company: [
-    { name: "Бидний тухай", href: "#about" },
-    { name: "Үнэ цэнэ", href: "#values" },
+    { name: "Бидний тухай", href: "#testimonials" },
+    { name: "Үйлчилгээ", href: "#services" },
     { name: "Холбоо барих", href: "#contact" },
   ],
   privacy: "Нууцлалын бодлого",
   terms: "Үйлчилгээний нөхцөл",
 };
-
-const socialLinks = [
-  { name: "LinkedIn", icon: Linkedin, href: "#" },
-  { name: "Facebook", icon: Facebook, href: "#" },
-];
 
 export function Footer() {
   const { mn: isMN } = useLang();
@@ -82,13 +80,6 @@ export function Footer() {
               {t.tagline}
             </p>
             <p className="mt-2 text-sm text-primary font-medium">{t.brand}</p>
-            <div className="mt-6 flex gap-4">
-              {socialLinks.map((social) => (
-                <Link key={social.name} href={social.href} className="text-muted-foreground hover:text-primary transition-colors" aria-label={social.name}>
-                  <social.icon className="h-5 w-5" />
-                </Link>
-              ))}
-            </div>
           </div>
 
           <div>
