@@ -3,14 +3,23 @@
 import { Mail, Phone, Globe } from "lucide-react";
 import { motion } from "motion/react";
 import { useLang } from "@/hooks/use-lang";
-import { LampContainer } from "@/components/ui/lamp";
 import { AnimatedBadge } from "@/components/ui/animated-badge";
+import { DottedSurface } from "@/components/ui/dotted-surface";
+
+const contact = {
+  email: "admin@digitalapex.mn",
+  phoneDisplay: "+976 7777 3553",
+  phoneHref: "+97677773553",
+  website: "www.digitalapex.mn",
+  websiteHref: "https://www.digitalapex.mn",
+};
 
 const en = {
   label: "Contact Us",
   h2line1: "Let's Discuss Your",
   h2line2: "Digital Journey",
-  description: "Ready to transform your organization with digital intelligence? Our team is here to help you navigate every step of your digital evolution.",
+  description:
+    "Ready to improve your IT infrastructure, systems, security, or digital operations? Talk with Digital Apex about reliable technology solutions matched to your business goals.",
   emailLabel: "Email",
   phoneLabel: "Phone",
   websiteLabel: "Website",
@@ -20,7 +29,8 @@ const mn = {
   label: "Холбоо барих",
   h2line1: "Таны дижитал хөгжлийг",
   h2line2: "хамтдаа эхлүүлье",
-  description: "Байгууллагынхаа IT дэд бүтэц, систем, аюулгүй байдал болон дижитал шилжилтийн хэрэгцээг бидэнтэй ярилцаарай. Digital Apex таны бизнесийн зорилгод нийцсэн найдвартай, үр ашигтай технологийн шийдлийг санал болгоно.",
+  description:
+    "Байгууллагынхаа IT дэд бүтэц, систем, аюулгүй байдал болон дижитал шилжилтийн хэрэгцээг бидэнтэй ярилцаарай. Digital Apex таны бизнесийн зорилгод нийцсэн найдвартай, үр ашигтай технологийн шийдлийг санал болгоно.",
   emailLabel: "Имэйл",
   phoneLabel: "Утас",
   websiteLabel: "Вэбсайт",
@@ -31,13 +41,15 @@ export function Contact() {
   const t = isMN ? mn : en;
 
   return (
-    <section id="contact">
-      <LampContainer>
-        {/* Label + Heading */}
+    <section id="contact" className="relative overflow-hidden pt-14 pb-28 lg:pt-20 lg:pb-36 bg-background">
+      <DottedSurface />
+
+      <div className="relative z-10 mx-auto max-w-4xl px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.35, duration: 0.8, ease: "easeInOut" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ delay: 0.2, duration: 0.8, ease: "easeInOut" }}
           className="text-center mb-12"
         >
           <div className="flex justify-center mb-4 scale-125">
@@ -53,48 +65,55 @@ export function Contact() {
           </p>
         </motion.div>
 
-        {/* Contact items */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.55, duration: 0.8, ease: "easeInOut" }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ delay: 0.4, duration: 0.8, ease: "easeInOut" }}
           className="flex flex-col sm:flex-row items-center justify-center gap-8"
         >
           <div className="flex items-start gap-4">
             <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0">
-              <Mail className="h-5 w-5" />
+              <Mail className="h-5 w-5" aria-hidden="true" />
             </div>
             <div>
               <p className="font-medium text-foreground">{t.emailLabel}</p>
-              <a href="mailto:info@digitalapex.mn" className="text-muted-foreground hover:text-primary transition-colors">
-                info@digitalapex.mn
+              <a href={`mailto:${contact.email}`} className="text-muted-foreground hover:text-primary transition-colors">
+                {contact.email}
               </a>
             </div>
           </div>
 
           <div className="flex items-start gap-4">
             <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0">
-              <Phone className="h-5 w-5" />
+              <Phone className="h-5 w-5" aria-hidden="true" />
             </div>
             <div>
               <p className="font-medium text-foreground">{t.phoneLabel}</p>
-              <a href="tel:+97677775335" className="text-muted-foreground hover:text-primary transition-colors">
-                +976 7777 5335
+              <a href={`tel:${contact.phoneHref}`} className="text-muted-foreground hover:text-primary transition-colors">
+                {contact.phoneDisplay}
               </a>
             </div>
           </div>
 
           <div className="flex items-start gap-4">
             <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0">
-              <Globe className="h-5 w-5" />
+              <Globe className="h-5 w-5" aria-hidden="true" />
             </div>
             <div>
               <p className="font-medium text-foreground">{t.websiteLabel}</p>
-              <p className="text-muted-foreground">www.digitalapex.mn</p>
+              <a
+                href={contact.websiteHref}
+                target="_blank"
+                rel="noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                {contact.website}
+              </a>
             </div>
           </div>
         </motion.div>
-      </LampContainer>
+      </div>
     </section>
   );
 }

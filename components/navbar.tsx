@@ -11,12 +11,14 @@ import { useLang } from "@/hooks/use-lang";
 
 const navItems = {
   en: [
-    { name: "About Us", href: "#testimonials" },
+    { name: "About Us", href: "#about" },
+    { name: "Partners", href: "#partners" },
     { name: "Services", href: "#services" },
     { name: "Contact Us", href: "#contact" },
   ],
   mn: [
-    { name: "Бидний тухай", href: "#testimonials" },
+    { name: "Бидний тухай", href: "#about" },
+    { name: "Хамтрагчид", href: "#partners" },
     { name: "Үйлчилгээ", href: "#services" },
     { name: "Холбоо барих", href: "#contact" },
   ],
@@ -27,18 +29,24 @@ export function Navbar() {
   const { mn: isMN } = useLang();
   const navigation = isMN ? navItems.mn : navItems.en;
 
+  const scrollToSection = (href: string) => {
+    setMobileMenuOpen(false);
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
-      <nav className="mx-auto max-w-4xl flex items-center justify-between px-5 py-3 rounded-full border bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm shadow-md shadow-black/5 dark:shadow-black/20 border-white/20 dark:border-white/10">
+      <nav className="mx-auto max-w-5xl flex items-center justify-between px-5 py-3 rounded-full border bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm shadow-md shadow-black/5 dark:shadow-black/20 border-white/20 dark:border-white/10">
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <Link href="#top" className="-m-1.5 p-1.5" aria-label="Digital Apex home">
             <Image
               src="/logo-dark.svg"
               alt="Digital Apex Logo"
               width={140}
               height={40}
               priority
-              className="h-8 w-auto hidden dark:block"
+              className="hidden dark:block"
+              style={{ width: "auto", height: "2rem" }}
             />
             <Image
               src="/logo-light.png"
@@ -46,7 +54,8 @@ export function Navbar() {
               width={140}
               height={40}
               priority
-              className="h-8 w-auto dark:hidden"
+              className="dark:hidden"
+              style={{ width: "auto", height: "2rem" }}
             />
           </Link>
         </div>
@@ -56,6 +65,8 @@ export function Navbar() {
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-foreground"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             <span className="sr-only">Toggle menu</span>
             {mobileMenuOpen ? (
@@ -71,7 +82,7 @@ export function Navbar() {
             <GlassButton
               key={item.name}
               size="sm"
-              onClick={() => document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => scrollToSection(item.href)}
             >
               {item.name}
             </GlassButton>
@@ -84,17 +95,16 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden mt-2">
-          <div className="mx-auto max-w-4xl bg-white/95 dark:bg-neutral-900/95 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 dark:border-white/10 px-6 py-4">
+        <div id="mobile-navigation" className="lg:hidden mt-2">
+          <div className="mx-auto max-w-5xl bg-white/95 dark:bg-neutral-900/95 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 dark:border-white/10 px-6 py-4">
             <div className="flex flex-col gap-2">
               {navigation.map((item) => (
                 <GlassButton
                   key={item.name}
                   size="sm"
                   className="w-full"
-                  onClick={() => { setMobileMenuOpen(false); document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" }); }}
+                  onClick={() => scrollToSection(item.href)}
                 >
                   {item.name}
                 </GlassButton>

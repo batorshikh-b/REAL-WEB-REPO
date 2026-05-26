@@ -204,6 +204,7 @@
   --animate-marquee-reverse: marquee-reverse 35s linear infinite;
 }
 
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -363,6 +364,74 @@
 @keyframes marquee-reverse {
   from { transform: translateX(-50%); }
   to   { transform: translateX(0); }
+}
+
+/* Loading screen letter animation */
+@keyframes loading-char-in {
+  0% {
+    opacity: 0;
+    filter: blur(30px);
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+.loading-char {
+  opacity: 0;
+  animation: loading-char-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ─── Optimus animation utilities ─── */
+
+.animate-char-in {
+  opacity: 0;
+  animation: char-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes char-in {
+  0%   { opacity: 0; filter: blur(40px); transform: translateY(65%); }
+  100% { opacity: 1; filter: blur(0);    transform: translateY(0); }
+}
+
+.line-reveal {
+  clip-path: inset(0 100% 0 0);
+  animation: line-reveal 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes line-reveal {
+  to { clip-path: inset(0 0 0 0); }
+}
+
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.letter-spin {
+  display: inline-block;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.letter-spin:hover {
+  transform: rotateY(360deg);
+}
+
+.noise-overlay {
+  position: relative;
+}
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Aurora animation */

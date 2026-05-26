@@ -99,7 +99,7 @@ export function WhyChooseUs() {
   const t = isMN ? mn : en;
 
   return (
-    <section id="testimonials" className="py-24 bg-secondary/30">
+    <section id="about" className="py-24 bg-secondary/30">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* Heading */}
