@@ -38,7 +38,7 @@ export function Footer() {
                 className="h-12 w-auto object-contain dark:hidden"
               />
               <Image
-                src="/logo-dark.png"
+                src="/logo-dark.svg"
                 alt="Digital Apex"
                 width={160}
                 height={48}

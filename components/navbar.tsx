@@ -33,7 +33,7 @@ export function Navbar() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
             <Image
-              src="/logo-dark.png"
+              src="/logo-dark.svg"
               alt="Digital Apex Logo"
               width={140}
               height={40}
