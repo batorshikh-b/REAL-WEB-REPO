@@ -61,7 +61,7 @@ export function Partners() {
   }, []);
 
   const t = isMN ? copy.mn : copy.en;
-  const sparkleColor = mounted && resolvedTheme === "dark" ? "#ffffff" : "#6366f1";
+  const sparkleColor = mounted && resolvedTheme === "dark" ? "#ffffff" : "#1e1b4b";
 
   return (
     <section id="partners" className="overflow-hidden bg-secondary/30" aria-label={t.ariaLabel}>
@@ -71,15 +71,16 @@ export function Partners() {
         </div>
       </div>
 
-      <div className="relative h-28 w-full overflow-hidden [mask-image:radial-gradient(50%_50%,white,transparent)]" aria-hidden="true">
+      <div className="relative h-36 w-full overflow-hidden [mask-image:radial-gradient(50%_50%,white,transparent)]" aria-hidden="true">
         <div className="absolute inset-0 before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_bottom_center,#6366f1,transparent_70%)] before:opacity-30" />
         <div className="absolute -left-1/2 top-1/2 aspect-[1/0.7] z-10 w-[200%] rounded-[100%] border-t border-border bg-secondary/30" />
         <Sparkles
-          density={240}
+          density={900}
           className="absolute inset-x-0 bottom-0 h-full w-full [mask-image:radial-gradient(50%_50%,white,transparent_85%)]"
           color={sparkleColor}
-          size={1.2}
-          speed={0.45}
+          size={1.4}
+          speed={1.8}
+          opacity={0.9}
         />
       </div>
 

@@ -66,7 +66,7 @@ export function Sparkles({
     window.addEventListener("resize", resize);
 
     const area = canvas.offsetWidth * canvas.offsetHeight;
-    const count = Math.min(220, Math.floor((area * density) / 800000));
+    const count = Math.min(400, Math.floor((area * density) / 800000));
     for (let i = 0; i < count; i++) {
       particles.push({
         x: Math.random() * canvas.offsetWidth,

@@ -19,7 +19,7 @@ const en = {
   h2line1: "Let's Discuss Your",
   h2line2: "Digital Journey",
   description:
-    "Ready to improve your IT infrastructure, systems, security, or digital operations? Talk with Digital Apex about reliable technology solutions matched to your business goals.",
+    "Talk with Digital Apex about reliable technology solutions matched to your business goals.",
   emailLabel: "Email",
   phoneLabel: "Phone",
   websiteLabel: "Website",
@@ -30,7 +30,7 @@ const mn = {
   h2line1: "Таны дижитал хөгжлийг",
   h2line2: "хамтдаа эхлүүлье",
   description:
-    "Байгууллагынхаа IT дэд бүтэц, систем, аюулгүй байдал болон дижитал шилжилтийн хэрэгцээг бидэнтэй ярилцаарай. Digital Apex таны бизнесийн зорилгод нийцсэн найдвартай, үр ашигтай технологийн шийдлийг санал болгоно.",
+    "Digital Apex таны бизнесийн зорилгод нийцсэн найдвартай, үр ашигтай технологийн шийдлийг санал болгоно.",
   emailLabel: "Имэйл",
   phoneLabel: "Утас",
   websiteLabel: "Вэбсайт",
@@ -50,7 +50,7 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ delay: 0.2, duration: 0.8, ease: "easeInOut" }}
-          className="text-center mb-12"
+          className="text-center mb-12 -mt-8"
         >
           <div className="flex justify-center mb-4 scale-125">
             <AnimatedBadge text={t.label} color="#6366f1" />

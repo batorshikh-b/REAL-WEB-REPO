@@ -48,39 +48,6 @@ export const AnimatedBadge = ({
       viewport={{ once: true }}
       className="group relative flex max-w-fit items-center justify-center gap-3 rounded-full border border-neutral-300 bg-white px-4 py-1.5 text-neutral-700 transition-colors dark:border-neutral-700/80 dark:bg-black dark:text-zinc-300"
     >
-      <div className="pointer-events-none absolute inset-x-0 bottom-full h-20 w-[165px]">
-        <svg
-          className="h-full w-full"
-          width="100%"
-          height="100%"
-          viewBox="0 0 50 50"
-          fill="none"
-        >
-          <g mask="url(#ml-mask-1)">
-            <circle
-              className="multiline ml-light-1"
-              cx="0"
-              cy="0"
-              r="20"
-              fill="url(#ml-white-grad)"
-            />
-          </g>
-          <defs>
-            <mask id="ml-mask-1">
-              <path
-                d="M 69 49.8 h -30 q -3 0 -3 -3 v -13 q 0 -3 -3 -3 h -23 q -3 0 -3 -3 v -13 q 0 -3 -3 -3 h -30"
-                strokeWidth="0.6"
-                stroke="white"
-              />
-            </mask>
-            <radialGradient id="ml-white-grad" fx="1">
-              <stop offset="0%" stopColor={color} />
-              <stop offset="20%" stopColor={color} />
-              <stop offset="100%" stopColor="transparent" />
-            </radialGradient>
-          </defs>
-        </svg>
-      </div>
       <div
         className="relative flex h-1 w-1 items-center justify-center rounded-full"
         style={{ backgroundColor: hexToRgba(color, 0.4) }}
@@ -113,34 +80,6 @@ export const AnimatedBadge = ({
       ) : (
         content
       )}
-      <style>
-        {`
-.multiline {
-  offset-anchor: 10px 0px;
-  animation: multiline-animation-path;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-duration: 3s;
-}
-
-.ml-light-1 {
-  offset-path: path(
-    "M 69 49.8 h -30 q -3 0 -3 -3 v -13 q 0 -3 -3 -3 h -23 q -3 0 -3 -3 v -13 q 0 -3 -3 -3 h -50"
-  );
-}
-
-@keyframes multiline-animation-path {
-  0% {
-    offset-distance: 0%;
-  }
-  50% {
-    offset-distance: 100%;
-  }
-  100% {
-    offset-distance: 100%;
-  }
-}`}
-      </style>
     </>
   )
 }
