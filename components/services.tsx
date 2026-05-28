@@ -11,7 +11,7 @@ type Service = {
   description: string;
   stat1: { value: string; label: string };
   stat2: { value: string; label: string };
-  visual: "helpdesk" | "network" | "datacenter" | "security" | "development" | "management";
+  visual: "helpdesk" | "network" | "datacenter" | "security" | "development";
 };
 
 function HelpdeskVisual() {
@@ -150,37 +150,6 @@ function DevelopmentVisual() {
   );
 }
 
-function ManagementVisual() {
-  const bars = [
-    { x: 70, y: 38, w: 70, d: "0s" },
-    { x: 82, y: 60, w: 56, d: "0.18s" },
-    { x: 62, y: 82, w: 86, d: "0.36s" },
-    { x: 92, y: 104, w: 48, d: "0.54s" },
-    { x: 66, y: 126, w: 66, d: "0.72s" },
-  ];
-
-  return (
-    <svg viewBox="0 0 200 160" className="h-full w-full">
-      {[0, 1, 2, 3].map((i) => (
-        <line key={i} x1={65 + i * 26} y1="25" x2={65 + i * 26} y2="142" stroke="currentColor" strokeWidth="1" opacity="0.1" />
-      ))}
-      {bars.map((bar, i) => (
-        <g key={i}>
-          <rect x="28" y={bar.y + 1} width="28" height="10" rx="3" fill="currentColor" opacity="0.16" />
-          <rect x={bar.x} y={bar.y} width={bar.w} height="13" rx="4" fill="currentColor" opacity="0.12" />
-          <rect x={bar.x} y={bar.y} width="0" height="13" rx="4" fill="currentColor" opacity="0.72">
-            <animate attributeName="width" values={`0;${bar.w};${bar.w}`} dur="2.5s" begin={bar.d} fill="freeze" />
-            <animate attributeName="opacity" values="0.55;0.9;0.55" dur="3s" begin={bar.d} repeatCount="indefinite" />
-          </rect>
-          <circle cx={bar.x + bar.w} cy={bar.y + 6.5} r="4" fill="currentColor">
-            <animate attributeName="opacity" values="1;0.35;1" dur="2s" begin={bar.d} repeatCount="indefinite" />
-          </circle>
-        </g>
-      ))}
-      <line x1="116" y1="24" x2="116" y2="143" stroke="currentColor" strokeWidth="1.5" opacity="0.35" strokeDasharray="5 4" />
-    </svg>
-  );
-}
 
 function AnimatedVisual({ type }: { type: Service["visual"] }) {
   switch (type) {
@@ -194,8 +163,6 @@ function AnimatedVisual({ type }: { type: Service["visual"] }) {
       return <SecurityVisual />;
     case "development":
       return <DevelopmentVisual />;
-    case "management":
-      return <ManagementVisual />;
   }
 }
 
@@ -209,7 +176,6 @@ const en = {
     { id: "datacenter", number: "03", tag: "DATACENTER", title: "Server Hosting & Datacenter", description: "Secure, high-availability server hosting and datacenter management with proactive monitoring, backup, and scalable capacity.", stat1: { value: "100%", label: "redundancy" }, stat2: { value: "< 50ms", label: "latency" }, visual: "datacenter" },
     { id: "security", number: "04", tag: "SECURITY", title: "User Data Security", description: "Comprehensive protection through access controls, encryption, security audits, and compliance frameworks for your most sensitive assets.", stat1: { value: "ISO 27001", label: "aligned" }, stat2: { value: "0", label: "breaches" }, visual: "security" },
     { id: "development", number: "05", tag: "DEVELOPMENT", title: "System Development Support", description: "End-to-end support for custom systems — feature development, bug resolution, performance tuning, and long-term technical stewardship.", stat1: { value: "10+", label: "years experience" }, stat2: { value: "55+", label: "engineers" }, visual: "development" },
-    { id: "management", number: "06", tag: "MANAGEMENT", title: "IT Project Management", description: "Structured delivery of IT projects using proven methodologies — from planning and resource allocation to execution and handover.", stat1: { value: "100%", label: "on-time delivery" }, stat2: { value: "30+", label: "projects done" }, visual: "management" },
   ] satisfies Service[],
 };
 
@@ -223,7 +189,6 @@ const mn = {
     { id: "datacenter", number: "03", tag: "ДАТАЦЕНТР", title: "Сервер & Датацентрийн үйлчилгээ", description: "Аюулгүй, өндөр хүртээмжтэй серверийн хостинг болон датацентрийн удирдлага — идэвхтэй хяналт, нөөцлөлт, уян хатан хүчин чадал.", stat1: { value: "100%", label: "нөөцлөлт" }, stat2: { value: "< 50ms", label: "хоцрогдол" }, visual: "datacenter" },
     { id: "security", number: "04", tag: "АЮУЛГҮЙ БАЙДАЛ", title: "Мэдээллийн аюулгүй байдал", description: "Нэвтрэх эрхийн хяналт, шифрлэлт, аюулгүй байдлын аудит болон нийцлийн хүрээгээр байгууллагын мэдээллийг иж бүрнээр хамгаалана.", stat1: { value: "ISO 27001", label: "нийцтэй" }, stat2: { value: "0", label: "зөрчил" }, visual: "security" },
     { id: "development", number: "05", tag: "ХӨГЖҮҮЛЭЛТ", title: "Систем хөгжүүлэлтийн үйлчилгээ", description: "Тусгай системийн эхнээс эцэс хүртэлх дэмжлэг — шинэ боломжуудыг нэмэх, алдааг засах, гүйцэтгэлийг сайжруулах.", stat1: { value: "10+", label: "жилийн туршлага" }, stat2: { value: "55+", label: "инженер" }, visual: "development" },
-    { id: "management", number: "06", tag: "МЕНЕЖМЕНТ", title: "IT төслийн удирдлага", description: "Туршлагатай аргачлалаар IT төслийг бүтэцтэйгээр хэрэгжүүлэх — төлөвлөлт, нөөц хуваарилалт, гүйцэтгэл, хүлээлгэн өгөлт.", stat1: { value: "100%", label: "цагт хүргэлт" }, stat2: { value: "30+", label: "дууссан төсөл" }, visual: "management" },
   ] satisfies Service[],
 };
 
