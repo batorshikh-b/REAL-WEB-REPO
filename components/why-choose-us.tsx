@@ -136,7 +136,7 @@ export function WhyChooseUs() {
                 hidden: { opacity: 0, y: 24 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
               }}
-              className="group relative p-7 bg-card border border-border rounded-2xl hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 flex flex-col gap-4"
+              className="group relative p-7 rounded-2xl border border-white/30 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-md shadow-[0_4px_24px_rgba(99,102,241,0.06),inset_0_1px_0_rgba(255,255,255,0.5)] dark:shadow-[0_4px_24px_rgba(99,102,241,0.08),inset_0_1px_0_rgba(255,255,255,0.08)] hover:border-primary/30 hover:shadow-[0_8px_32px_rgba(99,102,241,0.12),inset_0_1px_0_rgba(255,255,255,0.5)] transition-all duration-300 flex flex-col gap-4"
             >
               {/* Top row: icon + stat */}
               <div className="flex items-start justify-between">

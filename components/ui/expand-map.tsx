@@ -56,7 +56,6 @@ export function LocationMap({
       onClick={() => setIsExpanded(!isExpanded)}
     >
       <motion.div
-        className="relative overflow-hidden rounded-2xl bg-background border border-border"
         style={{
           rotateX: springRotateX,
           rotateY: springRotateY,
@@ -67,6 +66,9 @@ export function LocationMap({
           height: isExpanded ? 240 : 120,
         }}
         transition={{ type: "spring", stiffness: 400, damping: 35 }}
+      >
+      <motion.div
+        className="relative overflow-hidden rounded-2xl bg-background border border-border w-full h-full"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-muted/20 via-transparent to-muted/40" />
 
@@ -133,14 +135,30 @@ export function LocationMap({
             </motion.h3>
             <AnimatePresence>
               {isExpanded && (
-                <motion.p className="text-muted-foreground text-[10px] font-mono" initial={{ opacity: 0, y: -10, height: 0 }} animate={{ opacity: 1, y: 0, height: "auto" }} exit={{ opacity: 0, y: -10, height: 0 }} transition={{ duration: 0.25 }}>
-                  {coordinates}
-                </motion.p>
+                <>
+                  <motion.p className="text-muted-foreground text-[10px] font-mono" initial={{ opacity: 0, y: -10, height: 0 }} animate={{ opacity: 1, y: 0, height: "auto" }} exit={{ opacity: 0, y: -10, height: 0 }} transition={{ duration: 0.25 }}>
+                    {coordinates}
+                  </motion.p>
+                  <motion.a
+                    href="https://maps.google.com/?q=WW79%2B98C+%D0%9F.%D0%93%D1%8D%D0%BD%D0%B4%D1%8D%D0%BD%D0%B3%D0%B8%D0%B9%D0%BD+%D0%B3%D1%83%D0%B4%D0%B0%D0%BC%D0%B6+%D1%88%D0%BE%D0%BD%D1%85%D0%BE%D1%80%2C+%D0%A1%D0%91%D0%94+-+1+%D1%85%D0%BE%D1%80%D0%BE%D0%BE%2C+%D0%A3%D0%BB%D0%B0%D0%B0%D0%BD%D0%B1%D0%B0%D0%B0%D1%82%D0%B0%D1%80+14241"
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-flex items-center gap-1 text-[10px] text-primary hover:underline pointer-events-auto"
+                    initial={{ opacity: 0, y: -6, height: 0 }}
+                    animate={{ opacity: 1, y: 0, height: "auto" }}
+                    exit={{ opacity: 0, y: -6, height: 0 }}
+                    transition={{ duration: 0.25, delay: 0.05 }}
+                  >
+                    {isMN ? "Google Maps-д нээх ↗" : "Open in Google Maps ↗"}
+                  </motion.a>
+                </>
               )}
             </AnimatePresence>
             <motion.div className="h-px bg-gradient-to-r from-primary/50 via-primary/30 to-transparent" initial={{ scaleX: 0, originX: 0 }} animate={{ scaleX: isHovered || isExpanded ? 1 : 0.3 }} transition={{ duration: 0.4, ease: "easeOut" }} />
           </div>
         </div>
+      </motion.div>
       </motion.div>
 
       <motion.p

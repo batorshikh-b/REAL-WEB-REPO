@@ -48,75 +48,59 @@ export function Hero() {
 
   return (
     <AuroraBackground className="min-h-screen pt-20" showRadialGradient={true}>
-      <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8">
-        {/* Glass frame */}
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut", delay: 0.05 }}
-          className="relative rounded-3xl border border-white/20 dark:border-white/10 bg-white/10 dark:bg-white/5 backdrop-blur-xl shadow-[0_8px_64px_rgba(99,102,241,0.08),inset_0_1px_0_rgba(255,255,255,0.25)] px-8 py-14 sm:px-14 sm:py-16 overflow-hidden"
-        >
-          {/* top-left corner light */}
-          <div className="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-indigo-400/15 blur-3xl" />
-          {/* bottom-right corner light */}
-          <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-violet-400/10 blur-3xl" />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="text-center">
+          <motion.p
+            className="text-sm font-medium uppercase tracking-widest text-primary mb-6"
+            {...fadeUp(0.1)}
+          >
+            {t.tagline}
+          </motion.p>
 
-          <div className="relative text-center">
-            <motion.p
-              className="text-sm font-medium uppercase tracking-widest text-primary mb-6"
-              {...fadeUp(0.1)}
-            >
-              {t.tagline}
-            </motion.p>
+          <motion.h1
+            className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
+            {...fadeUp(0.25)}
+          >
+            <span className="dark:text-white text-foreground">
+              {t.h1a}{" "}
+            </span>
+            <span className="neon-apex">
+              {t.h1b}
+            </span>
+          </motion.h1>
 
-            <motion.h1
-              className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl"
-              {...fadeUp(0.25)}
-            >
-              <span className="dark:text-white text-foreground">
-                {t.h1a}{" "}
-              </span>
-              <span className="neon-apex">
-                {t.h1b}
-              </span>
-            </motion.h1>
+          <motion.p
+            className="mt-6 text-lg leading-relaxed dark:text-neutral-300 text-muted-foreground max-w-2xl mx-auto text-pretty"
+            {...fadeUp(0.4)}
+          >
+            {t.description}
+          </motion.p>
 
-            <motion.p
-              className="mt-6 text-lg leading-relaxed dark:text-neutral-300 text-muted-foreground max-w-2xl mx-auto text-pretty"
-              {...fadeUp(0.4)}
-            >
-              {t.description}
-            </motion.p>
+          <motion.div
+            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+            {...fadeUp(0.55)}
+          >
+            <GlassButton size="lg" onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}>
+              {t.cta1}
+              <ArrowRight className="h-4 w-4" />
+            </GlassButton>
+            <GlassButton size="lg" onClick={() => document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" })}>
+              {t.cta2}
+            </GlassButton>
+          </motion.div>
 
-            <motion.div
-              className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-              {...fadeUp(0.55)}
-            >
-              <GlassButton size="lg" onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}>
-                {t.cta1}
-                <ArrowRight className="h-4 w-4" />
-              </GlassButton>
-              <GlassButton size="lg" onClick={() => document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" })}>
-                {t.cta2}
-              </GlassButton>
-            </motion.div>
-
-            {/* Divider */}
-            <div className="mt-12 h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-            <motion.div
-              className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4"
-              {...fadeUp(0.7)}
-            >
-              {t.stats.map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <p className="text-3xl font-bold dark:text-white text-foreground sm:text-4xl">{stat.value}</p>
-                  <p className="mt-1 text-sm dark:text-neutral-300 text-muted-foreground">{stat.label}</p>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </motion.div>
+          <motion.div
+            className="mt-20 grid grid-cols-2 gap-8 md:grid-cols-4"
+            {...fadeUp(0.7)}
+          >
+            {t.stats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <p className="text-3xl font-bold dark:text-white text-foreground sm:text-4xl">{stat.value}</p>
+                <p className="mt-1 text-sm dark:text-neutral-300 text-muted-foreground">{stat.label}</p>
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </div>
 
     </AuroraBackground>

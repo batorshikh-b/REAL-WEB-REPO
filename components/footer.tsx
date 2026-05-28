@@ -54,10 +54,15 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">
               {t.locationHeader}
             </h3>
-            <div className="flex items-start gap-2">
+            <a
+              href="https://maps.google.com/?q=WW79%2B98C+%D0%9F.%D0%93%D1%8D%D0%BD%D0%B4%D1%8D%D0%BD%D0%B3%D0%B8%D0%B9%D0%BD+%D0%B3%D1%83%D0%B4%D0%B0%D0%BC%D0%B6+%D1%88%D0%BE%D0%BD%D1%85%D0%BE%D1%80%2C+%D0%A1%D0%91%D0%94+-+1+%D1%85%D0%BE%D1%80%D0%BE%D0%BE%2C+%D0%A3%D0%BB%D0%B0%D0%B0%D0%BD%D0%B1%D0%B0%D0%B0%D1%82%D0%B0%D1%80+14241"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-start gap-2 group"
+            >
               <MapPin className="h-4 w-4 text-primary mt-0.5 shrink-0" aria-hidden="true" />
-              <p className="text-sm text-muted-foreground leading-relaxed">{t.address}</p>
-            </div>
+              <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-primary transition-colors">{t.address}</p>
+            </a>
           </div>
 
           <div className="flex items-start">
