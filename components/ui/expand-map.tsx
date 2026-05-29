@@ -139,19 +139,22 @@ export function LocationMap({
                   <motion.p className="text-muted-foreground text-[10px] font-mono" initial={{ opacity: 0, y: -10, height: 0 }} animate={{ opacity: 1, y: 0, height: "auto" }} exit={{ opacity: 0, y: -10, height: 0 }} transition={{ duration: 0.25 }}>
                     {coordinates}
                   </motion.p>
-                  <motion.a
-                    href="https://maps.google.com/?q=WW79%2B98C+%D0%9F.%D0%93%D1%8D%D0%BD%D0%B4%D1%8D%D0%BD%D0%B3%D0%B8%D0%B9%D0%BD+%D0%B3%D1%83%D0%B4%D0%B0%D0%BC%D0%B6+%D1%88%D0%BE%D0%BD%D1%85%D0%BE%D1%80%2C+%D0%A1%D0%91%D0%94+-+1+%D1%85%D0%BE%D1%80%D0%BE%D0%BE%2C+%D0%A3%D0%BB%D0%B0%D0%B0%D0%BD%D0%B1%D0%B0%D0%B0%D1%82%D0%B0%D1%80+14241"
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-1 text-[10px] text-primary hover:underline pointer-events-auto"
+                  <motion.div
                     initial={{ opacity: 0, y: -6, height: 0 }}
                     animate={{ opacity: 1, y: 0, height: "auto" }}
                     exit={{ opacity: 0, y: -6, height: 0 }}
                     transition={{ duration: 0.25, delay: 0.05 }}
                   >
-                    {isMN ? "Google Maps-д нээх ↗" : "Open in Google Maps ↗"}
-                  </motion.a>
+                    <a
+                      href="https://maps.google.com/?q=WW79%2B98C+%D0%9F.%D0%93%D1%8D%D0%BD%D0%B4%D1%8D%D0%BD%D0%B3%D0%B8%D0%B9%D0%BD+%D0%B3%D1%83%D0%B4%D0%B0%D0%BC%D0%B6+%D1%88%D0%BE%D0%BD%D1%85%D0%BE%D1%80%2C+%D0%A1%D0%91%D0%94+-+1+%D1%85%D0%BE%D1%80%D0%BE%D0%BE%2C+%D0%A3%D0%BB%D0%B0%D0%B0%D0%BD%D0%B1%D0%B0%D0%B0%D1%82%D0%B0%D1%80+14241"
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline"
+                    >
+                      {isMN ? "Google Maps-д нээх ↗" : "Open in Google Maps ↗"}
+                    </a>
+                  </motion.div>
                 </>
               )}
             </AnimatePresence>
