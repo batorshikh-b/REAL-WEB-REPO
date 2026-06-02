@@ -144,13 +144,14 @@ export function LocationMap({
                     animate={{ opacity: 1, y: 0, height: "auto" }}
                     exit={{ opacity: 0, y: -6, height: 0 }}
                     transition={{ duration: 0.25, delay: 0.05 }}
+                    className="pt-1"
                   >
                     <a
                       href="https://maps.google.com/?q=WW79%2B98C+%D0%9F.%D0%93%D1%8D%D0%BD%D0%B4%D1%8D%D0%BD%D0%B3%D0%B8%D0%B9%D0%BD+%D0%B3%D1%83%D0%B4%D0%B0%D0%BC%D0%B6+%D1%88%D0%BE%D0%BD%D1%85%D0%BE%D1%80%2C+%D0%A1%D0%91%D0%94+-+1+%D1%85%D0%BE%D1%80%D0%BE%D0%BE%2C+%D0%A3%D0%BB%D0%B0%D0%B0%D0%BD%D0%B1%D0%B0%D0%B0%D1%82%D0%B0%D1%80+14241"
                       target="_blank"
                       rel="noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-1 text-[11px] text-primary hover:underline"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 text-primary text-xs font-medium transition-colors duration-150"
                     >
                       {isMN ? "Google Maps-д нээх ↗" : "Open in Google Maps ↗"}
                     </a>
