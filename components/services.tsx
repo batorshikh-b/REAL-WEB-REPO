@@ -169,26 +169,24 @@ function AnimatedVisual({ type }: { type: Service["visual"] }) {
 const en = {
   eyebrow: "IT SERVICES",
   h2: "IT solutions ready\nto deploy.",
-  subtext: "From helpdesk to infrastructure — every service is built for reliability, security, and long-term business growth.",
   services: [
     { id: "helpdesk", number: "01", tag: "HELPDESK", title: "IT Helpdesk & Support", description: "Rapid-response technical support for your entire organization — resolving hardware, software, and connectivity issues to minimize downtime.", stat1: { value: "< 2h", label: "avg response time" }, stat2: { value: "99%", label: "resolution rate" }, visual: "helpdesk" },
     { id: "network", number: "02", tag: "NETWORK", title: "Corporate Network & Maintenance", description: "Design, deployment, and continuous maintenance of your corporate network infrastructure ensuring reliable performance and secure connectivity.", stat1: { value: "24/7", label: "monitoring" }, stat2: { value: "99.9%", label: "uptime SLA" }, visual: "network" },
     { id: "datacenter", number: "03", tag: "DATACENTER", title: "Server Hosting & Datacenter", description: "Secure, high-availability server hosting and datacenter management with proactive monitoring, backup, and scalable capacity.", stat1: { value: "100%", label: "redundancy" }, stat2: { value: "< 50ms", label: "latency" }, visual: "datacenter" },
     { id: "security", number: "04", tag: "SECURITY", title: "User Data Security", description: "Comprehensive protection through access controls, encryption, security audits, and compliance frameworks for your most sensitive assets.", stat1: { value: "ISO 27001", label: "aligned" }, stat2: { value: "0", label: "breaches" }, visual: "security" },
-    { id: "development", number: "05", tag: "DEVELOPMENT", title: "System Development Support", description: "End-to-end support for custom systems — feature development, bug resolution, performance tuning, and long-term technical stewardship.", stat1: { value: "10+", label: "years experience" }, stat2: { value: "55+", label: "engineers" }, visual: "development" },
+    { id: "development", number: "05", tag: "DEVELOPMENT", title: "System Development Support", description: "End-to-end support for custom systems — feature development, bug resolution, performance tuning, and long-term technical stewardship.", stat1: { value: "20+", label: "years experience" }, stat2: { value: "55+", label: "engineers" }, visual: "development" },
   ] satisfies Service[],
 };
 
 const mn = {
   eyebrow: "ҮЙЛЧИЛГЭЭ",
   h2: "Таны бизнест\nбэлэн IT шийдэл.",
-  subtext: "Helpdesk-ээс дэд бүтэц хүртэл — бүх үйлчилгээ найдвартай, аюулгүй, бизнесийн урт хугацааны өсөлтөд зориулагдсан.",
   services: [
     { id: "helpdesk", number: "01", tag: "HELPDESK", title: "IT Helpdesk үйлчилгээ", description: "Байгууллагын бүх хэмжээнд хурдан хугацаанд шийдвэрлэгдэх техникийн дэмжлэг — тоног төхөөрөмж, програм хангамж, холболтын асуудлыг шийдэж бүтээмжийг хангана.", stat1: { value: "< 2h", label: "хариу хугацаа" }, stat2: { value: "99%", label: "шийдвэрлэлт" }, visual: "helpdesk" },
     { id: "network", number: "02", tag: "СҮЛЖЭЭ", title: "Corporate сүлжээний үйлчилгээ", description: "Корпорацийн сүлжээний дэд бүтцийг зохион бүтээх, хэрэгжүүлэх, тасралтгүй засвар үйлчилгээ хийх — найдвартай холболт, аюулгүй байдлыг хангана.", stat1: { value: "24/7", label: "хяналт" }, stat2: { value: "99.9%", label: "ажиллагаа" }, visual: "network" },
     { id: "datacenter", number: "03", tag: "ДАТАЦЕНТР", title: "Сервер & Датацентрийн үйлчилгээ", description: "Аюулгүй, өндөр хүртээмжтэй серверийн хостинг болон датацентрийн удирдлага — идэвхтэй хяналт, нөөцлөлт, уян хатан хүчин чадал.", stat1: { value: "100%", label: "нөөцлөлт" }, stat2: { value: "< 50ms", label: "хоцрогдол" }, visual: "datacenter" },
     { id: "security", number: "04", tag: "АЮУЛГҮЙ БАЙДАЛ", title: "Мэдээллийн аюулгүй байдал", description: "Нэвтрэх эрхийн хяналт, шифрлэлт, аюулгүй байдлын аудит болон нийцлийн хүрээгээр байгууллагын мэдээллийг иж бүрнээр хамгаалана.", stat1: { value: "ISO 27001", label: "нийцтэй" }, stat2: { value: "0", label: "зөрчил" }, visual: "security" },
-    { id: "development", number: "05", tag: "ХӨГЖҮҮЛЭЛТ", title: "Систем хөгжүүлэлтийн үйлчилгээ", description: "Тусгай системийн эхнээс эцэс хүртэлх дэмжлэг — шинэ боломжуудыг нэмэх, алдааг засах, гүйцэтгэлийг сайжруулах.", stat1: { value: "10+", label: "жилийн туршлага" }, stat2: { value: "55+", label: "инженер" }, visual: "development" },
+    { id: "development", number: "05", tag: "ХӨГЖҮҮЛЭЛТ", title: "Систем хөгжүүлэлтийн үйлчилгээ", description: "Тусгай системийн эхнээс эцэс хүртэлх дэмжлэг — шинэ боломжуудыг нэмэх, алдааг засах, гүйцэтгэлийг сайжруулах.", stat1: { value: "20+", label: "жилийн туршлага" }, stat2: { value: "55+", label: "инженер" }, visual: "development" },
   ] satisfies Service[],
 };
 
@@ -304,13 +302,6 @@ export function Services() {
                 </span>
               ))}
             </h2>
-            <p
-              className={`max-w-xl text-base leading-relaxed text-muted-foreground transition-all duration-700 delay-150 lg:text-xl ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-              }`}
-            >
-              {t.subtext}
-            </p>
           </div>
         </div>
 
