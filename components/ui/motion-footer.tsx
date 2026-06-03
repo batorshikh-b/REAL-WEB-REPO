@@ -211,6 +211,7 @@ export function CinematicFooter() {
   const giantTextRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
+  const bottomBarRef = useRef<HTMLDivElement>(null);
   const { mn: isMN } = useLang();
   const t = isMN ? mn : en;
 
@@ -229,6 +230,12 @@ export function CinematicFooter() {
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, stagger: 0.15, ease: "power3.out",
           scrollTrigger: { trigger: wrapperRef.current, start: "top 40%", end: "bottom bottom", scrub: 1 } }
+      );
+      gsap.fromTo(
+        bottomBarRef.current,
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, ease: "power3.out",
+          scrollTrigger: { trigger: wrapperRef.current, start: "top 20%", end: "bottom bottom", scrub: 1 } }
       );
     }, wrapperRef);
 
@@ -298,7 +305,7 @@ export function CinematicFooter() {
           </div>
 
           {/* Bottom bar */}
-          <div className="relative z-20 w-full pb-8 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div ref={bottomBarRef} className="relative z-20 w-full pb-8 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Copyright */}
             <p className="text-muted-foreground text-[10px] md:text-xs font-semibold tracking-widest uppercase order-2 md:order-1">
               © {new Date().getFullYear()} {t.copyright}
