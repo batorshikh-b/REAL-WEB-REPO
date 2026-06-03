@@ -180,7 +180,7 @@ const en = {
 
 const mn = {
   eyebrow: "ҮЙЛЧИЛГЭЭ",
-  h2: "Таны бизнест\nбэлэн IT шийдэл.",
+  h2: "Таны бизнесийн\nIT шийдэл.",
   services: [
     { id: "helpdesk", number: "01", tag: "HELPDESK", title: "IT Helpdesk үйлчилгээ", description: "Байгууллагын бүх хэмжээнд хурдан хугацаанд шийдвэрлэгдэх техникийн дэмжлэг — тоног төхөөрөмж, програм хангамж, холболтын асуудлыг шийдэж бүтээмжийг хангана.", stat1: { value: "< 2h", label: "хариу хугацаа" }, stat2: { value: "99%", label: "шийдвэрлэлт" }, visual: "helpdesk" },
     { id: "network", number: "02", tag: "СҮЛЖЭЭ", title: "Corporate сүлжээний үйлчилгээ", description: "Корпорацийн сүлжээний дэд бүтцийг зохион бүтээх, хэрэгжүүлэх, тасралтгүй засвар үйлчилгээ хийх — найдвартай холболт, аюулгүй байдлыг хангана.", stat1: { value: "24/7", label: "хяналт" }, stat2: { value: "99.9%", label: "ажиллагаа" }, visual: "network" },
@@ -211,7 +211,7 @@ function ServiceRow({ service, index }: { service: Service; index: number }) {
     <div
       ref={rowRef}
       className={`group relative transition-all duration-700 mb-4 ${
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
+        isVisible ? "translate-x-0 opacity-100" : "-translate-x-16 opacity-0"
       }`}
       style={{ transitionDelay: `${index * 90}ms` }}
     >
