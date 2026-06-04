@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
@@ -33,13 +33,21 @@ export function Navbar() {
   const { scrollY } = useScroll();
   const springCfg = { stiffness: 200, damping: 30, mass: 0.8 };
 
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   // Outer header padding
-  const rawPad = useTransform(scrollY, [0, 80], [0, 16]);
+  const rawPad = useTransform(scrollY, [0, 80], [0, isMobile ? 10 : 16]);
   const pad = useSpring(rawPad, springCfg);
 
   // Nav inner padding
-  const rawNavPX = useTransform(scrollY, [0, 80], [32, 20]);
-  const rawNavPY = useTransform(scrollY, [0, 80], [20, 12]);
+  const rawNavPX = useTransform(scrollY, [0, 80], [isMobile ? 16 : 32, isMobile ? 14 : 20]);
+  const rawNavPY = useTransform(scrollY, [0, 80], [isMobile ? 14 : 20, isMobile ? 10 : 12]);
   const navPX = useSpring(rawNavPX, springCfg);
   const navPY = useSpring(rawNavPY, springCfg);
 
@@ -47,7 +55,7 @@ export function Navbar() {
   const rawRadius = useTransform(scrollY, [0, 80], [0, 9999]);
   const borderRadius = useSpring(rawRadius, springCfg);
 
-  const rawMaxW = useTransform(scrollY, [0, 80], [9999, 1100]);
+  const rawMaxW = useTransform(scrollY, [0, 80], [9999, isMobile ? 9999 : 1100]);
   const maxWidth = useSpring(rawMaxW, springCfg);
 
   // Background (light theme: white, dark theme handled via CSS var)

@@ -88,7 +88,7 @@ const STYLES = `
 }
 
 .footer-giant-bg-text {
-  font-size: 22vw;
+  font-size: clamp(4rem, 22vw, 22vw);
   line-height: 0.75;
   font-weight: 900;
   letter-spacing: -0.05em;
@@ -271,22 +271,22 @@ export function CinematicFooter() {
           </div>
 
           {/* Marquee */}
-          <div className="absolute top-24 left-0 w-full overflow-hidden border-y border-border/50 bg-background/60 backdrop-blur-md py-4 z-10 -rotate-2 scale-110 shadow-2xl">
+          <div className="absolute top-16 sm:top-24 left-0 w-full overflow-hidden border-y border-border/50 bg-background/60 backdrop-blur-md py-3 sm:py-4 z-10 sm:-rotate-2 scale-110 shadow-2xl">
             <MarqueeTrack items={t.marquee} />
           </div>
 
           {/* Main content */}
-          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 mt-20 w-full max-w-5xl mx-auto">
+          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 sm:px-6 mt-16 sm:mt-20 w-full max-w-5xl mx-auto">
 
             {/* Logo */}
-            <Link href="#top" className="mb-8 block" aria-label="Digital Apex home">
-              <Image src="/logo-dark.svg" alt="Digital Apex" width={180} height={48} className="hidden dark:block" style={{ height: "3rem", width: "auto" }} />
-              <Image src="/logo-light.png" alt="Digital Apex" width={180} height={48} className="dark:hidden" style={{ height: "3rem", width: "auto" }} />
+            <Link href="#top" className="mb-6 sm:mb-8 block" aria-label="Digital Apex home">
+              <Image src="/logo-dark.svg" alt="Digital Apex" width={180} height={48} className="hidden dark:block" style={{ height: "2.5rem", width: "auto" }} />
+              <Image src="/logo-light.png" alt="Digital Apex" width={180} height={48} className="dark:hidden" style={{ height: "2.5rem", width: "auto" }} />
             </Link>
 
             <h2
               ref={headingRef}
-              className="text-4xl md:text-7xl font-black footer-text-glow tracking-tighter mb-8 text-center"
+              className="text-3xl sm:text-5xl md:text-7xl font-black footer-text-glow tracking-tighter mb-6 sm:mb-8 text-center"
             >
               {t.heading}
             </h2>
@@ -297,7 +297,7 @@ export function CinematicFooter() {
               href="https://maps.google.com/?q=WW79%2B98C+%D0%9F.%D0%93%D1%8D%D0%BD%D0%B4%D1%8D%D0%BD%D0%B3%D0%B8%D0%B9%D0%BD+%D0%B3%D1%83%D0%B4%D0%B0%D0%BC%D0%B6+%D1%88%D0%BE%D0%BD%D1%85%D0%BE%D1%80%2C+%D0%A1%D0%91%D0%94+-+1+%D1%85%D0%BE%D1%80%D0%BE%D0%BE%2C+%D0%A3%D0%BB%D0%B0%D0%B0%D0%BD%D0%B1%D0%B0%D0%B0%D1%82%D0%B0%D1%80+14241"
               target="_blank"
               rel="noreferrer"
-              className="footer-glass-pill px-6 py-3 rounded-full flex items-center gap-2 text-muted-foreground text-xs font-medium hover:text-foreground"
+              className="footer-glass-pill px-4 sm:px-6 py-3 rounded-full flex items-center gap-2 text-muted-foreground text-[10px] sm:text-xs font-medium hover:text-foreground text-center leading-relaxed max-w-xs sm:max-w-none"
             >
               <MapPin className="w-3 h-3 text-primary shrink-0" />
               {t.address.replace(/\n/g, " · ")}
