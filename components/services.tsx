@@ -248,7 +248,7 @@ function ServiceRow({ service, index }: { service: Service; index: number }) {
           </div>
 
           <div className="flex justify-center lg:justify-end">
-            <div className="relative h-44 w-full max-w-xs overflow-hidden border border-foreground/10 bg-foreground/[0.02] text-primary transition-all duration-500 group-hover:border-primary/35 group-hover:bg-primary/[0.04] lg:h-48">
+            <div aria-hidden="true" className="relative h-44 w-full max-w-xs overflow-hidden border border-foreground/10 bg-foreground/[0.02] text-primary transition-all duration-500 group-hover:border-primary/35 group-hover:bg-primary/[0.04] lg:h-48">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.16),transparent_62%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <div className="relative h-full p-5 transition-transform duration-500 group-hover:scale-105">
                 <AnimatedVisual type={service.visual} />

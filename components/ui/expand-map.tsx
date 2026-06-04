@@ -62,7 +62,7 @@ export function LocationMap({
           transformStyle: "preserve-3d",
         }}
         animate={{
-          width: isExpanded ? 300 : 220,
+          width: isExpanded ? Math.min(300, (typeof window !== "undefined" ? window.innerWidth * 0.75 : 300)) : 220,
           height: isExpanded ? 240 : 120,
         }}
         transition={{ type: "spring", stiffness: 400, damping: 35 }}

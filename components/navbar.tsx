@@ -58,15 +58,13 @@ export function Navbar() {
   const rawMaxW = useTransform(scrollY, [0, 80], [9999, isMobile ? 9999 : 1100]);
   const maxWidth = useSpring(rawMaxW, springCfg);
 
-  // Background (light theme: white, dark theme handled via CSS var)
+  // Background — uses CSS variable so it adapts to dark/light theme automatically
   const rawBg = useTransform(scrollY, [0, 80], [0, 0.88]);
   const bgAlpha = useSpring(rawBg, springCfg);
-  const backgroundColor = useTransform(bgAlpha, (v) =>
-    `rgba(255,255,255,${v})`
-  );
-  const darkBgColor = useTransform(bgAlpha, (v) =>
-    `rgba(23,23,23,${v})`
-  );
+  // oklch(var(--background)) isn't animatable, so we use the resolved RGB approximations
+  // light: white (255,255,255), dark: near-black (23,23,23) — handled via two overlaid divs
+  const lightBg = useTransform(bgAlpha, (v) => `rgba(255,255,255,${v})`);
+  const darkBg = useTransform(bgAlpha, (v) => `rgba(23,23,23,${v})`);
 
   // Blur
   const rawBlur = useTransform(scrollY, [0, 80], [0, 12]);
@@ -103,9 +101,9 @@ export function Navbar() {
         paddingTop: pad,
       }}
     >
-      {/* Light-theme nav */}
+      {/* Single nav — light/dark bg handled by overlaid divs inside */}
       <motion.nav
-        className="mx-auto flex items-center justify-between dark:hidden"
+        className="mx-auto flex items-center justify-between relative overflow-hidden"
         style={{
           maxWidth,
           borderRadius,
@@ -113,7 +111,6 @@ export function Navbar() {
           paddingRight: navPX,
           paddingTop: navPY,
           paddingBottom: navPY,
-          backgroundColor,
           backdropFilter,
           boxShadow,
           borderWidth: 1,
@@ -121,38 +118,18 @@ export function Navbar() {
           borderColor,
         }}
       >
+        {/* Light theme bg layer */}
+        <motion.div aria-hidden="true" className="absolute inset-0 dark:hidden pointer-events-none" style={{ backgroundColor: lightBg }} />
+        {/* Dark theme bg layer */}
+        <motion.div aria-hidden="true" className="absolute inset-0 hidden dark:block pointer-events-none" style={{ backgroundColor: darkBg }} />
+        <div className="relative z-10 flex items-center justify-between w-full">
         <NavContent
           navigation={navigation}
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenuOpen={setMobileMenuOpen}
           scrollToSection={scrollToSection}
         />
-      </motion.nav>
-
-      {/* Dark-theme nav */}
-      <motion.nav
-        className="mx-auto hidden dark:flex items-center justify-between"
-        style={{
-          maxWidth,
-          borderRadius,
-          paddingLeft: navPX,
-          paddingRight: navPX,
-          paddingTop: navPY,
-          paddingBottom: navPY,
-          backgroundColor: darkBgColor,
-          backdropFilter,
-          boxShadow,
-          borderWidth: 1,
-          borderStyle: "solid",
-          borderColor,
-        }}
-      >
-        <NavContent
-          navigation={navigation}
-          mobileMenuOpen={mobileMenuOpen}
-          setMobileMenuOpen={setMobileMenuOpen}
-          scrollToSection={scrollToSection}
-        />
+        </div>
       </motion.nav>
 
       {mobileMenuOpen && (

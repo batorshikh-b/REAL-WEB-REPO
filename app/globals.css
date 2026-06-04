@@ -256,12 +256,12 @@
 }
 
 .neon-apex {
-  color: #4f46e5;
+  color: var(--primary);
   animation: neon-pulse 4s ease-in-out infinite;
 }
 
 .dark .neon-apex {
-  color: #c7d2fe;
+  color: color-mix(in oklch, var(--primary) 70%, white);
   animation: neon-pulse-dark 4s ease-in-out infinite;
 }
 

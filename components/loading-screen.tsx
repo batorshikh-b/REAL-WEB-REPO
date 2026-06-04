@@ -18,6 +18,7 @@ export function LoadingScreen() {
     <AnimatePresence>
       {visible && (
         <motion.div
+          aria-hidden="true"
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#0a0a14]"
           initial={{ scale: 1, opacity: 1 }}
           exit={{

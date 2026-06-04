@@ -17,18 +17,30 @@ const geistMono = Geist_Mono({
 
 
 export const metadata: Metadata = {
-  title: 'Digital Apex',
-  description: 'Digital Apex combines digital intelligence with digital transformation to optimize operations and enhance customer experiences in Mongolia.',
-  keywords: ['IT consulting', 'digital transformation', 'software development', 'network security', 'cloud services', 'accounting services', 'Mongolia'],
+  metadataBase: new URL('https://digitalapex.mn'),
+  title: 'Digital Apex — IT Consulting & Solutions in Mongolia',
+  description: 'Digital Apex provides professional IT consulting, network security, helpdesk support, server hosting, and digital transformation services in Ulaanbaatar, Mongolia.',
+  keywords: ['IT consulting', 'digital transformation', 'network security', 'helpdesk', 'cloud services', 'server hosting', 'Mongolia', 'Ulaanbaatar', 'Монгол'],
   icons: {
     icon: '/favicon.png',
     apple: '/favicon.png',
   },
   openGraph: {
-    title: 'Digital Apex',
-    description: 'Combining digital intelligence with digital transformation to optimize operations and enhance customer experiences.',
+    title: 'Digital Apex — IT Consulting & Solutions in Mongolia',
+    description: 'Professional IT consulting, network security, helpdesk support, and digital transformation services in Ulaanbaatar, Mongolia.',
     type: 'website',
+    url: 'https://digitalapex.mn',
+    images: [{ url: '/favicon.png', width: 512, height: 512, alt: 'Digital Apex' }],
+    siteName: 'Digital Apex',
+    locale: 'mn_MN',
   },
+  twitter: {
+    card: 'summary',
+    title: 'Digital Apex — IT Consulting & Solutions in Mongolia',
+    description: 'Professional IT consulting and digital transformation services in Mongolia.',
+    images: ['/favicon.png'],
+  },
+  robots: { index: true, follow: true },
 }
 
 export const viewport: Viewport = {
