@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
+import { useRouter } from "next/navigation";
 import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { useLang } from "@/hooks/use-lang";
@@ -23,7 +24,7 @@ const en = {
     { value: "20+", label: "Years Experience" },
     { value: "15+", label: "Partners" },
     { value: "10+", label: "Ongoing Projects" },
-    { value: "20", label: "Team Members" },
+    { value: "55+", label: "Specialists" },
   ],
 };
 
@@ -38,13 +39,14 @@ const mn = {
     { value: "20+", label: "Жилийн туршлага" },
     { value: "15+", label: "Харилцагчид" },
     { value: "10+", label: "Идэвхтэй төслүүд" },
-    { value: "20", label: "Багийн гишүүд" },
+    { value: "55+", label: "Мэргэжилтэн" },
   ],
 };
 
 export function Hero() {
   const { mn: isMN } = useLang();
   const t = isMN ? mn : en;
+  const router = useRouter();
 
   return (
     <AuroraBackground className="min-h-screen pt-20" showRadialGradient={true}>
@@ -80,7 +82,7 @@ export function Hero() {
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
             {...fadeUp(0.55)}
           >
-            <GlassButton size="lg" onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}>
+            <GlassButton size="lg" onClick={() => router.push("/contact")}>
               {t.cta1}
               <ArrowRight className="h-4 w-4" />
             </GlassButton>

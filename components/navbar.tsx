@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter, usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
@@ -10,18 +11,20 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { LangToggle } from "@/components/ui/lang-toggle";
 import { useLang } from "@/hooks/use-lang";
 
-const navItems = {
+type NavItem = { name: string; href: string; route?: boolean };
+
+const navItems: { en: NavItem[]; mn: NavItem[] } = {
   en: [
     { name: "About Us", href: "#about" },
     { name: "Partners", href: "#partners" },
     { name: "Services", href: "#services" },
-    { name: "Contact Us", href: "#contact" },
+    { name: "Contact Us", href: "/contact", route: true },
   ],
   mn: [
     { name: "Бидний тухай", href: "#about" },
     { name: "Хамтрагчид", href: "#partners" },
     { name: "Үйлчилгээ", href: "#services" },
-    { name: "Холбоо барих", href: "#contact" },
+    { name: "Холбоо барих", href: "/contact", route: true },
   ],
 };
 
@@ -29,6 +32,9 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { mn: isMN } = useLang();
   const navigation = isMN ? navItems.mn : navItems.en;
+  const router = useRouter();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   const { scrollY } = useScroll();
   const springCfg = { stiffness: 200, damping: 30, mass: 0.8 };
@@ -87,9 +93,16 @@ export function Navbar() {
       : "none"
   );
 
-  const scrollToSection = (href: string) => {
+  const handleNav = (item: NavItem) => {
     setMobileMenuOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    if (item.route) {
+      router.push(item.href);
+    } else if (isHome) {
+      document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // On non-home pages, navigate to home with the hash
+      router.push(`/${item.href}`);
+    }
   };
 
   return (
@@ -127,7 +140,8 @@ export function Navbar() {
           navigation={navigation}
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenuOpen={setMobileMenuOpen}
-          scrollToSection={scrollToSection}
+          handleNav={handleNav}
+          isHome={isHome}
         />
         </div>
       </motion.nav>
@@ -147,7 +161,7 @@ export function Navbar() {
                   key={item.name}
                   size="sm"
                   className="w-full"
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => handleNav(item)}
                 >
                   {item.name}
                 </GlassButton>
@@ -168,17 +182,19 @@ function NavContent({
   navigation,
   mobileMenuOpen,
   setMobileMenuOpen,
-  scrollToSection,
+  handleNav,
+  isHome,
 }: {
-  navigation: { name: string; href: string }[];
+  navigation: NavItem[];
   mobileMenuOpen: boolean;
   setMobileMenuOpen: (v: boolean) => void;
-  scrollToSection: (href: string) => void;
+  handleNav: (item: NavItem) => void;
+  isHome: boolean;
 }) {
   return (
     <>
       <div className="flex lg:flex-1">
-        <Link href="#top" className="-m-1.5 p-1.5" aria-label="Digital Apex home">
+        <Link href={isHome ? "#top" : "/"} className="-m-1.5 p-1.5" aria-label="Digital Apex home">
           <Image
             src="/logo-dark.svg"
             alt="Digital Apex Logo"
@@ -222,7 +238,7 @@ function NavContent({
           <GlassButton
             key={item.name}
             size="sm"
-            onClick={() => scrollToSection(item.href)}
+            onClick={() => handleNav(item)}
           >
             {item.name}
           </GlassButton>

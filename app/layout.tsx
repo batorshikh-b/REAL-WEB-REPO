@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { LangProvider } from '@/contexts/lang-context'
+import { NavigationLoader } from '@/components/navigation-loader'
 import './globals.css'
 
 const geistSans = Geist({ 
@@ -64,6 +65,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <LangProvider>
+            <NavigationLoader />
             {children}
           </LangProvider>
         </ThemeProvider>

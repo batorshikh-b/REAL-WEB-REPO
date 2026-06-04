@@ -3,10 +3,8 @@ import { Hero } from "@/components/hero";
 import { Services } from "@/components/services";
 import { Partners } from "@/components/partners";
 import { WhyChooseUs } from "@/components/why-choose-us";
-import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 import { ScrollReset } from "@/components/scroll-reset";
-import { LoadingScreen } from "@/components/loading-screen";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -43,14 +41,12 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <LoadingScreen />
       <ScrollReset />
       <Navbar />
       <Hero />
       <WhyChooseUs />
       <Partners />
       <Services />
-      <Contact />
       <Footer />
     </main>
   );
