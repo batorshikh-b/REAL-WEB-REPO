@@ -16,7 +16,7 @@ export function CountUp({ value, className, duration = 1.6 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
 
-  const parsed = value.match(/^(\D*)([\d.]+)(.*)$/s);
+  const parsed = value.match(/^(\D*)([\d.]+)(.*)$/);
   const suffixHasDigit = parsed ? /\d/.test(parsed[3]) : false;
   const animatable = Boolean(parsed) && !suffixHasDigit;
 
