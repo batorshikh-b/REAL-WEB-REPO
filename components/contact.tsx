@@ -70,7 +70,7 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ delay: 0.4, duration: 0.8, ease: "easeInOut" }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-8"
+          className="flex flex-col items-start w-fit mx-auto gap-8 sm:w-auto sm:flex-row sm:items-center sm:justify-center"
         >
           <a href={`mailto:${contact.email}`} className="group flex items-start gap-4 rounded-xl p-2 transition-transform duration-300 hover:-translate-y-1">
             <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0 transition-all duration-300 group-hover:bg-primary/15 group-hover:scale-110 group-hover:-rotate-6">
