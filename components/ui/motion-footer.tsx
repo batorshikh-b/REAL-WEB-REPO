@@ -93,8 +93,8 @@ const STYLES = `
   font-weight: 900;
   letter-spacing: -0.05em;
   color: transparent;
-  -webkit-text-stroke: 1px color-mix(in oklch, var(--foreground) 5%, transparent);
-  background: linear-gradient(180deg, color-mix(in oklch, var(--foreground) 10%, transparent) 0%, transparent 60%);
+  -webkit-text-stroke: 1.5px color-mix(in oklch, var(--foreground) 18%, transparent);
+  background: linear-gradient(180deg, color-mix(in oklch, var(--foreground) 28%, transparent) 0%, transparent 65%);
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -221,9 +221,9 @@ export function CinematicFooter() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         giantTextRef.current,
-        { y: "10vh", scale: 0.85, opacity: 0 },
+        { y: "8vh", scale: 0.9, opacity: 0.5 },
         { y: "0vh", scale: 1, opacity: 1, ease: "power1.out",
-          scrollTrigger: { trigger: wrapperRef.current, start: "top 80%", end: "bottom bottom", scrub: 1 } }
+          scrollTrigger: { trigger: wrapperRef.current, start: "top 90%", end: "bottom bottom", scrub: 1 } }
       );
       gsap.fromTo(
         [headingRef.current, linksRef.current],
@@ -251,12 +251,8 @@ export function CinematicFooter() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
-      <div
-        ref={wrapperRef}
-        className="relative h-[100dvh] w-full"
-        style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
-      >
-        <footer className="fixed bottom-0 left-0 flex h-[100dvh] w-full flex-col justify-between overflow-hidden bg-background text-foreground cinematic-footer-wrapper">
+      <div ref={wrapperRef} className="relative w-full">
+        <footer className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden bg-background text-foreground cinematic-footer-wrapper">
 
           {/* Aurora glow */}
           <div className="footer-aurora absolute left-1/2 top-1/2 h-[60vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe rounded-[50%] blur-[80px] pointer-events-none z-0" />
