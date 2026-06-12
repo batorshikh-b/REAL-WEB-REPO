@@ -93,10 +93,21 @@ const STYLES = `
   font-weight: 900;
   letter-spacing: -0.05em;
   color: transparent;
-  -webkit-text-stroke: 1.5px color-mix(in oklch, var(--foreground) 18%, transparent);
-  background: linear-gradient(180deg, color-mix(in oklch, var(--foreground) 28%, transparent) 0%, transparent 65%);
+  /* Desktop: subtle watermark */
+  -webkit-text-stroke: 1px color-mix(in oklch, var(--foreground) 8%, transparent);
+  background: linear-gradient(180deg, color-mix(in oklch, var(--foreground) 12%, transparent) 0%, transparent 60%);
   -webkit-background-clip: text;
   background-clip: text;
+}
+
+/* Phones: bump opacity so it stays visible on small screens */
+@media (max-width: 639px) {
+  .footer-giant-bg-text {
+    -webkit-text-stroke: 1.5px color-mix(in oklch, var(--foreground) 20%, transparent);
+    background: linear-gradient(180deg, color-mix(in oklch, var(--foreground) 30%, transparent) 0%, transparent 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
 }
 
 .footer-text-glow {
