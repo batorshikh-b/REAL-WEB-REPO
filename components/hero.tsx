@@ -48,7 +48,7 @@ export function Hero() {
   const t = isMN ? mn : en;
 
   return (
-    <AuroraBackground className="min-h-screen pt-20" showRadialGradient={true}>
+    <AuroraBackground className="min-h-[100svh] pt-28 pb-16" showRadialGradient={true}>
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <div className="text-center">
           <motion.p
