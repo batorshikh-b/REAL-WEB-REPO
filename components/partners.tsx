@@ -39,7 +39,7 @@ const copy = {
 
 function LogoCard({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="flex-shrink-0 mx-4 flex items-center justify-center w-36 h-20 rounded-xl bg-white dark:bg-white border border-border shadow-sm px-4 py-3">
+    <div className="flex-shrink-0 mx-4 flex items-center justify-center w-36 h-20 rounded-xl bg-white dark:bg-white border border-border shadow-sm px-4 py-3 transition-all duration-300 hover:scale-105 hover:shadow-md hover:border-primary/30">
       <Image
         src={src}
         alt={alt}
@@ -85,8 +85,8 @@ export function Partners() {
       </div>
 
       <div className="relative -mt-4 pb-12">
-        <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
-          <div className="flex animate-marquee w-max">
+        <div className="group overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+          <div className="flex animate-marquee w-max group-hover:[animation-play-state:paused]">
             {[...logos, ...logos].map((logo, i) => (
               <LogoCard key={`${logo.src}-${i}`} src={logo.src} alt={logo.alt} />
             ))}

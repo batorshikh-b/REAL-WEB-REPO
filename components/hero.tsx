@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { motion } from "motion/react";
 import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
 import { AuroraBackground } from "@/components/ui/aurora-background";
@@ -29,7 +29,7 @@ const en = {
 };
 
 const mn = {
-  tagline: "Мэргэжлийн Мэдээллийн технологийн үйлчилгээ",
+  tagline: "Мэргэжлийн Мэдээлэл технологийн үйлчилгээ",
   h1a: "Дижитал",
   h1b: "Апекс",
   description: "Бид дэвшилтэт технологи, шинэлэг шийдлүүдийг ашиглан байгууллагын хөгжил, уян хатан байдал, өсөлтийг дэмжиж, инноваци болон чанарыг эрхэмлэн ажилладаг.",
@@ -107,6 +107,17 @@ export function Hero() {
         </div>
       </div>
 
+      <motion.button
+        type="button"
+        onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })}
+        aria-label={isMN ? "Доош гүйлгэх" : "Scroll down"}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 rounded-full p-2 text-muted-foreground hover:text-primary transition-colors"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4, duration: 0.8 }}
+      >
+        <ChevronDown className="h-6 w-6 animate-bounce motion-reduce:animate-none" />
+      </motion.button>
     </AuroraBackground>
   );
 }

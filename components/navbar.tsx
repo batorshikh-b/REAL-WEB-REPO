@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter, usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
@@ -12,7 +11,7 @@ import { LangToggle } from "@/components/ui/lang-toggle";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { useLang } from "@/hooks/use-lang";
 
-type NavItem = { name: string; href: string; route?: boolean };
+type NavItem = { name: string; href: string };
 
 const navItems: { en: NavItem[]; mn: NavItem[] } = {
   en: [
@@ -33,9 +32,6 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { mn: isMN } = useLang();
   const navigation = isMN ? navItems.mn : navItems.en;
-  const router = useRouter();
-  const pathname = usePathname();
-  const isHome = pathname === "/";
 
   const { scrollY } = useScroll();
   const springCfg = { stiffness: 200, damping: 30, mass: 0.8 };
@@ -96,14 +92,7 @@ export function Navbar() {
 
   const handleNav = (item: NavItem) => {
     setMobileMenuOpen(false);
-    if (item.route) {
-      router.push(item.href);
-    } else if (isHome) {
-      document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      // On non-home pages, navigate to home with the hash
-      router.push(`/${item.href}`);
-    }
+    document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -144,7 +133,6 @@ export function Navbar() {
           mobileMenuOpen={mobileMenuOpen}
           setMobileMenuOpen={setMobileMenuOpen}
           handleNav={handleNav}
-          isHome={isHome}
         />
         </div>
       </motion.nav>
@@ -187,18 +175,16 @@ function NavContent({
   mobileMenuOpen,
   setMobileMenuOpen,
   handleNav,
-  isHome,
 }: {
   navigation: NavItem[];
   mobileMenuOpen: boolean;
   setMobileMenuOpen: (v: boolean) => void;
   handleNav: (item: NavItem) => void;
-  isHome: boolean;
 }) {
   return (
     <>
       <div className="flex lg:flex-1">
-        <Link href={isHome ? "#top" : "/"} className="-m-1.5 p-1.5" aria-label="Digital Apex home">
+        <Link href="#top" className="-m-1.5 p-1.5" aria-label="Digital Apex home">
           <Image
             src="/logo-dark.svg"
             alt="Digital Apex Logo"

@@ -25,6 +25,11 @@ const en = {
   websiteLabel: "Website",
 };
 
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+};
+
 const mn = {
   label: "Холбоо барих",
   h2line1: "Таны дижитал хөгжлийг",
@@ -66,13 +71,13 @@ export function Contact() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ delay: 0.4, duration: 0.8, ease: "easeInOut" }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } } }}
           className="flex flex-col items-start w-fit mx-auto gap-8 sm:w-auto sm:flex-row sm:items-center sm:justify-center"
         >
-          <a href={`mailto:${contact.email}`} className="group flex items-start gap-4 rounded-xl p-2 transition-transform duration-300 hover:-translate-y-1">
+          <motion.a variants={itemVariants} href={`mailto:${contact.email}`} className="group flex items-start gap-4 rounded-xl p-2 transition-transform duration-300 hover:-translate-y-1">
             <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0 transition-all duration-300 group-hover:bg-primary/15 group-hover:scale-110 group-hover:-rotate-6">
               <Mail className="h-5 w-5" aria-hidden="true" />
             </div>
@@ -82,9 +87,9 @@ export function Contact() {
                 {contact.email}
               </span>
             </div>
-          </a>
+          </motion.a>
 
-          <a href={`tel:${contact.phoneHref}`} className="group flex items-start gap-4 rounded-xl p-2 transition-transform duration-300 hover:-translate-y-1">
+          <motion.a variants={itemVariants} href={`tel:${contact.phoneHref}`} className="group flex items-start gap-4 rounded-xl p-2 transition-transform duration-300 hover:-translate-y-1">
             <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0 transition-all duration-300 group-hover:bg-primary/15 group-hover:scale-110 group-hover:-rotate-6">
               <Phone className="h-5 w-5" aria-hidden="true" />
             </div>
@@ -94,9 +99,10 @@ export function Contact() {
                 {contact.phoneDisplay}
               </span>
             </div>
-          </a>
+          </motion.a>
 
-          <a
+          <motion.a
+            variants={itemVariants}
             href={contact.websiteHref}
             target="_blank"
             rel="noreferrer"
@@ -111,7 +117,7 @@ export function Contact() {
                 {contact.website}
               </span>
             </div>
-          </a>
+          </motion.a>
         </motion.div>
       </div>
     </section>

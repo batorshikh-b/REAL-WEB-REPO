@@ -174,33 +174,17 @@ MagneticButton.displayName = "MagneticButton";
 const en = {
   marquee: ["IT Consulting", "Network Security", "Helpdesk Support", "Cloud Solutions", "Data Protection", "Digital Transformation"],
   heading: "Let's work together",
-  about: "About Us",
-  services: "Services",
-  partners: "Partners",
-  contact: "Contact Us",
-  locationLabel: "Location",
   address: "Ulaanbaatar, Sukhbaatar District\n1st Khoroo, Genden 16\nMN Central Office, 12th Floor",
-  email: "admin@digitalapex.mn",
-  phone: "7777 3553",
   copyright: "Digital Apex. All rights reserved.",
-  madeWith: "Built with",
   backTop: "Back to top",
 };
 
 const mn = {
   marquee: ["IT Зөвлөх", "Сүлжээний Аюулгүй байдал", "Helpdesk Дэмжлэг", "Клауд Шийдэл", "Мэдээлэл Хамгаалалт", "Дижитал Хувиргалт"],
   heading: "Хамтран ажиллацгаая",
-  about: "Бидний тухай",
-  services: "Үйлчилгээ",
-  partners: "Хамтрагчид",
-  contact: "Холбоо барих",
-  locationLabel: "Байршил",
   address: "Улаанбаатар, Сүхбаатар дүүрэг\n1-р хороо, Гэндэн 16\nMN Central Office, 12 давхар",
-  email: "admin@digitalapex.mn",
-  phone: "7777 3553",
   copyright: "Digital Apex. Бүх эрх хуулиар хамгаалагдсан.",
-  madeWith: "Бүтээсэн",
-  backTop: "Дээш",
+  backTop: "Дээш буцах",
 };
 
 function MarqueeTrack({ items }: { items: string[] }) {
@@ -254,10 +238,6 @@ export function CinematicFooter() {
   }, []);
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
-  const scrollTo = (id: string) => {
-    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <>
@@ -323,6 +303,7 @@ export function CinematicFooter() {
             <MagneticButton
               as="button"
               onClick={scrollToTop}
+              aria-label={t.backTop}
               className="w-11 h-11 rounded-full footer-glass-pill flex items-center justify-center text-muted-foreground hover:text-foreground group order-3"
             >
               <svg className="w-4 h-4 transform group-hover:-translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

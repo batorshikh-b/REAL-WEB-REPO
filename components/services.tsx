@@ -204,7 +204,7 @@ function ServiceRow({ service, index }: { service: Service; index: number }) {
     >
       <div className="flex flex-col gap-8 rounded-2xl border border-foreground/10 bg-card px-8 py-10 shadow-sm transition-shadow duration-300 group-hover:shadow-md lg:flex-row lg:gap-16 lg:px-10 lg:py-12">
         <div className="shrink-0 flex items-center justify-between lg:block">
-          <span className="font-mono text-sm text-muted-foreground">{service.number}</span>
+          <span className="font-mono text-sm text-muted-foreground transition-colors duration-300 group-hover:text-primary group-hover:font-semibold">{service.number}</span>
           <span className="inline-flex items-center rounded-full border border-foreground/10 px-3 py-1 text-[11px] font-mono tracking-widest text-muted-foreground lg:hidden">
             {service.tag}
           </span>
@@ -212,8 +212,8 @@ function ServiceRow({ service, index }: { service: Service; index: number }) {
 
         <div className="grid flex-1 gap-8 lg:grid-cols-[1fr_18rem] lg:items-center">
           <div>
-            <span className="mb-5 hidden items-center gap-3 text-xs font-mono tracking-widest text-muted-foreground lg:inline-flex">
-              <span className="h-px w-8 bg-foreground/30 transition-all duration-500 group-hover:w-12" />
+            <span className="mb-5 hidden items-center gap-3 text-xs font-mono tracking-widest text-muted-foreground transition-colors duration-500 group-hover:text-primary lg:inline-flex">
+              <span className="h-px w-8 bg-foreground/30 transition-all duration-500 group-hover:w-12 group-hover:bg-primary" />
               {service.tag}
             </span>
             <h3 className="mb-4 text-3xl font-semibold tracking-tight text-foreground transition-transform duration-500 group-hover:translate-x-2 lg:text-4xl">
