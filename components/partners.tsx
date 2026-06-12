@@ -85,12 +85,12 @@ export function Partners() {
       </div>
 
       <div className="relative -mt-4 pb-12">
-        <div className="pointer-events-none absolute left-0 top-0 h-full w-8 sm:w-16 lg:w-24 z-10 bg-gradient-to-r from-secondary/60 to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-8 sm:w-16 lg:w-24 z-10 bg-gradient-to-l from-secondary/60 to-transparent" />
-        <div className="flex animate-marquee w-max">
-          {[...logos, ...logos].map((logo, i) => (
-            <LogoCard key={`${logo.src}-${i}`} src={logo.src} alt={logo.alt} />
-          ))}
+        <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+          <div className="flex animate-marquee w-max">
+            {[...logos, ...logos].map((logo, i) => (
+              <LogoCard key={`${logo.src}-${i}`} src={logo.src} alt={logo.alt} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
