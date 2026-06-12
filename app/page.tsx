@@ -1,8 +1,9 @@
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
-import { Services } from "@/components/services";
-import { Partners } from "@/components/partners";
 import { WhyChooseUs } from "@/components/why-choose-us";
+import { Partners } from "@/components/partners";
+import { Services } from "@/components/services";
+import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 import { ScrollReset } from "@/components/scroll-reset";
 
@@ -44,10 +45,24 @@ export default function Home() {
       <ScrollReset />
       <Navbar />
       <Hero />
+      <SectionSeam />
       <WhyChooseUs />
+      <SectionSeam />
       <Partners />
+      <SectionSeam />
       <Services />
+      <SectionSeam />
+      <Contact />
       <Footer />
     </main>
+  );
+}
+
+function SectionSeam() {
+  return (
+    <div
+      aria-hidden="true"
+      className="h-px w-full bg-gradient-to-r from-transparent via-border to-transparent"
+    />
   );
 }

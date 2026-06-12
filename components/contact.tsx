@@ -72,46 +72,46 @@ export function Contact() {
           transition={{ delay: 0.4, duration: 0.8, ease: "easeInOut" }}
           className="flex flex-col sm:flex-row items-center justify-center gap-8"
         >
-          <div className="flex items-start gap-4">
-            <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0">
+          <a href={`mailto:${contact.email}`} className="group flex items-start gap-4 rounded-xl p-2 transition-transform duration-300 hover:-translate-y-1">
+            <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0 transition-all duration-300 group-hover:bg-primary/15 group-hover:scale-110 group-hover:-rotate-6">
               <Mail className="h-5 w-5" aria-hidden="true" />
             </div>
             <div>
               <p className="font-medium text-foreground">{t.emailLabel}</p>
-              <a href={`mailto:${contact.email}`} className="text-muted-foreground hover:text-primary transition-colors">
+              <span className="text-muted-foreground transition-colors group-hover:text-primary">
                 {contact.email}
-              </a>
+              </span>
             </div>
-          </div>
+          </a>
 
-          <div className="flex items-start gap-4">
-            <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0">
+          <a href={`tel:${contact.phoneHref}`} className="group flex items-start gap-4 rounded-xl p-2 transition-transform duration-300 hover:-translate-y-1">
+            <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0 transition-all duration-300 group-hover:bg-primary/15 group-hover:scale-110 group-hover:-rotate-6">
               <Phone className="h-5 w-5" aria-hidden="true" />
             </div>
             <div>
               <p className="font-medium text-foreground">{t.phoneLabel}</p>
-              <a href={`tel:${contact.phoneHref}`} className="text-muted-foreground hover:text-primary transition-colors">
+              <span className="text-muted-foreground transition-colors group-hover:text-primary">
                 {contact.phoneDisplay}
-              </a>
+              </span>
             </div>
-          </div>
+          </a>
 
-          <div className="flex items-start gap-4">
-            <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0">
+          <a
+            href={contact.websiteHref}
+            target="_blank"
+            rel="noreferrer"
+            className="group flex items-start gap-4 rounded-xl p-2 transition-transform duration-300 hover:-translate-y-1"
+          >
+            <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary flex-shrink-0 transition-all duration-300 group-hover:bg-primary/15 group-hover:scale-110 group-hover:-rotate-6">
               <Globe className="h-5 w-5" aria-hidden="true" />
             </div>
             <div>
               <p className="font-medium text-foreground">{t.websiteLabel}</p>
-              <a
-                href={contact.websiteHref}
-                target="_blank"
-                rel="noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
+              <span className="text-muted-foreground transition-colors group-hover:text-primary">
                 {contact.website}
-              </a>
+              </span>
             </div>
-          </div>
+          </a>
         </motion.div>
       </div>
     </section>

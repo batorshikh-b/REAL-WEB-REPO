@@ -9,6 +9,7 @@ import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LangToggle } from "@/components/ui/lang-toggle";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { useLang } from "@/hooks/use-lang";
 
 type NavItem = { name: string; href: string; route?: boolean };
@@ -18,13 +19,13 @@ const navItems: { en: NavItem[]; mn: NavItem[] } = {
     { name: "About Us", href: "#about" },
     { name: "Partners", href: "#partners" },
     { name: "Services", href: "#services" },
-    { name: "Contact Us", href: "/contact", route: true },
+    { name: "Contact Us", href: "#contact" },
   ],
   mn: [
     { name: "Бидний тухай", href: "#about" },
     { name: "Хамтрагчид", href: "#partners" },
     { name: "Үйлчилгээ", href: "#services" },
-    { name: "Холбоо барих", href: "/contact", route: true },
+    { name: "Холбоо барих", href: "#contact" },
   ],
 };
 
@@ -106,6 +107,8 @@ export function Navbar() {
   };
 
   return (
+    <>
+    <ScrollProgress />
     <motion.header
       className="fixed top-0 left-0 right-0 z-50"
       style={{
@@ -175,6 +178,7 @@ export function Navbar() {
         </motion.div>
       )}
     </motion.header>
+    </>
   );
 }
 

@@ -265,6 +265,19 @@
   animation: neon-pulse-dark 4s ease-in-out infinite;
 }
 
+/* Brand gradient text — indigo → violet */
+.text-gradient-brand {
+  background-image: linear-gradient(135deg, #6366f1 0%, #818cf8 45%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .text-gradient-brand {
+  background-image: linear-gradient(135deg, #818cf8 0%, #a5b4fc 45%, #c4b5fd 100%);
+}
+
 /* Custom scrollbar for webkit browsers */
 ::-webkit-scrollbar {
   width: 8px;

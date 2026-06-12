@@ -2,6 +2,7 @@
 
 import { ShieldCheck, Headphones, Users, TrendingUp } from "lucide-react";
 import { motion } from "motion/react";
+import { CountUp } from "@/components/ui/count-up";
 import { useLang } from "@/hooks/use-lang";
 
 const en = {
@@ -72,15 +73,15 @@ export function WhyChooseUs() {
                 hidden: { opacity: 0, y: 24 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
               }}
-              className="group relative p-7 rounded-2xl border border-white/30 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-md shadow-[0_4px_24px_rgba(99,102,241,0.06),inset_0_1px_0_rgba(255,255,255,0.5)] dark:shadow-[0_4px_24px_rgba(99,102,241,0.08),inset_0_1px_0_rgba(255,255,255,0.08)] hover:border-primary/30 hover:shadow-[0_8px_32px_rgba(99,102,241,0.12),inset_0_1px_0_rgba(255,255,255,0.5)] transition-all duration-300 flex flex-col gap-4"
+              className="group relative p-7 rounded-2xl border border-white/30 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-md shadow-[0_4px_24px_rgba(99,102,241,0.06),inset_0_1px_0_rgba(255,255,255,0.5)] dark:shadow-[0_4px_24px_rgba(99,102,241,0.08),inset_0_1px_0_rgba(255,255,255,0.08)] hover:border-primary/30 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(99,102,241,0.12),inset_0_1px_0_rgba(255,255,255,0.5)] transition-all duration-300 flex flex-col gap-4"
             >
               {/* Top row: icon + stat */}
               <div className="flex items-start justify-between">
-                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary group-hover:bg-primary/15 transition-colors duration-300">
-                  <value.icon className="h-6 w-6" />
+                <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary/15 group-hover:scale-110 group-hover:-rotate-6">
+                  <value.icon className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-primary leading-none">{value.stat}</p>
+                  <CountUp value={value.stat} className="block text-2xl font-bold text-gradient-brand leading-none" />
                   <p className="text-[10px] text-muted-foreground uppercase tracking-wider mt-0.5">{value.statLabel}</p>
                 </div>
               </div>

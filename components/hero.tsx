@@ -2,9 +2,9 @@
 
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
-import { useRouter } from "next/navigation";
 import { GlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
 import { AuroraBackground } from "@/components/ui/aurora-background";
+import { CountUp } from "@/components/ui/count-up";
 import { useLang } from "@/hooks/use-lang";
 
 const fadeUp = (delay: number) => ({
@@ -46,7 +46,6 @@ const mn = {
 export function Hero() {
   const { mn: isMN } = useLang();
   const t = isMN ? mn : en;
-  const router = useRouter();
 
   return (
     <AuroraBackground className="min-h-screen pt-20" showRadialGradient={true}>
@@ -82,7 +81,7 @@ export function Hero() {
             className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
             {...fadeUp(0.55)}
           >
-            <GlassButton size="lg" onClick={() => router.push("/contact")}>
+            <GlassButton size="lg" onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}>
               {t.cta1}
               <ArrowRight className="h-4 w-4" />
             </GlassButton>
@@ -97,7 +96,10 @@ export function Hero() {
           >
             {t.stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="text-3xl font-bold dark:text-white text-foreground sm:text-4xl">{stat.value}</p>
+                <CountUp
+                  value={stat.value}
+                  className="block text-3xl font-bold text-gradient-brand sm:text-4xl"
+                />
                 <p className="mt-1 text-sm dark:text-neutral-300 text-muted-foreground">{stat.label}</p>
               </div>
             ))}

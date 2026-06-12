@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
 import { useLang } from "@/hooks/use-lang";
 
 type Service = {
@@ -191,29 +191,16 @@ const mn = {
 };
 
 function ServiceRow({ service, index }: { service: Service; index: number }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const rowRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
-      },
-      { threshold: 0.18 }
-    );
-
-    const row = rowRef.current;
-    if (row) observer.observe(row);
-    return () => observer.disconnect();
-  }, []);
+  // Alternate entrance direction per row for a more deliberate cadence.
+  const fromX = index % 2 === 0 ? -64 : 64;
 
   return (
-    <div
-      ref={rowRef}
-      className={`group relative transition-all duration-700 mb-4 ${
-        isVisible ? "translate-x-0 opacity-100" : "-translate-x-16 opacity-0"
-      }`}
-      style={{ transitionDelay: `${index * 90}ms` }}
+    <motion.div
+      initial={{ opacity: 0, x: fromX }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.18 }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className="group relative mb-4"
     >
       <div className="flex flex-col gap-8 rounded-2xl border border-foreground/10 bg-card px-8 py-10 shadow-sm transition-shadow duration-300 group-hover:shadow-md lg:flex-row lg:gap-16 lg:px-10 lg:py-12">
         <div className="shrink-0 flex items-center justify-between lg:block">
@@ -257,33 +244,18 @@ function ServiceRow({ service, index }: { service: Service; index: number }) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 export function Services() {
   const { mn: isMN } = useLang();
   const t = isMN ? mn : en;
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
-      },
-      { threshold: 0.1 }
-    );
-
-    const section = sectionRef.current;
-    if (section) observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
 
   const h2Lines = t.h2.split("\n");
 
   return (
-    <section id="services" ref={sectionRef} className="relative overflow-hidden bg-background py-24 lg:py-32">
+    <section id="services" className="relative overflow-hidden bg-background py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="mb-16 lg:mb-24">
           <span className="mb-6 inline-flex items-center gap-3 text-sm font-mono text-muted-foreground">
@@ -291,17 +263,19 @@ export function Services() {
             {t.eyebrow}
           </span>
           <div className="grid gap-8 lg:grid-cols-[1fr_30rem] lg:items-end">
-            <h2
-              className={`text-4xl font-bold tracking-tight text-foreground transition-all duration-700 lg:text-6xl ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-              }`}
+            <motion.h2
+              className="text-4xl font-bold tracking-tight text-foreground lg:text-6xl"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
               {h2Lines.map((line, index) => (
                 <span key={line} className={index === 1 ? "block text-muted-foreground" : "block"}>
                   {line}
                 </span>
               ))}
-            </h2>
+            </motion.h2>
           </div>
         </div>
 
