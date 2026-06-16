@@ -85,8 +85,8 @@ export function Partners() {
       </div>
 
       <div className="relative -mt-4 pb-12">
-        <div className="group overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
-          <div className="flex animate-marquee w-max group-hover:[animation-play-state:paused]">
+        <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+          <div className="flex animate-marquee w-max">
             {[...logos, ...logos].map((logo, i) => (
               <LogoCard key={`${logo.src}-${i}`} src={logo.src} alt={logo.alt} />
             ))}
