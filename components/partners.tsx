@@ -24,6 +24,8 @@ const logos = [
   { src: "/companies/Picture15.png", alt: "Kaspersky" },
   { src: "/companies/Picture16.png", alt: "Supermicro" },
   { src: "/companies/Picture17.png", alt: "APC by Schneider Electric" },
+  { src: "/companies/CA_logo-removebg-preview.png", alt: "Command Alkon" },
+  { src: "/companies/limble.png", alt: "Limble" },
 ];
 
 const copy = {
