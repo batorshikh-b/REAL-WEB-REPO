@@ -7,9 +7,9 @@ import { AnimatedBadge } from "@/components/ui/animated-badge";
 import { DottedSurface } from "@/components/ui/dotted-surface";
 
 const contact = {
-  email: "admin@digitalapex.mn",
+  email: "info@digitalapex.mn",
   phoneDisplay: "+976 7777 3553",
-  phoneHref: "+97677773553",
+  phoneHref: "+976****3553",
   website: "www.digitalapex.mn",
   websiteHref: "https://www.digitalapex.mn",
 };
