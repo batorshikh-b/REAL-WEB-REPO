@@ -13,7 +13,7 @@ const en = {
   values: [
     { id: "secure-solutions", icon: ShieldCheck, stat: "100%", statLabel: "Secure", title: "Secure, Reliable Solutions", description: "We implement policies, configurations, and monitoring that protect your systems, infrastructure, and business data end-to-end." },
     { id: "fast-support", icon: Headphones, stat: "24/7", statLabel: "Support", title: "Fast Support Service", description: "We diagnose and resolve technical issues quickly so your daily operations stay productive and uninterrupted." },
-    { id: "professional-team", icon: Users, stat: "55+", statLabel: "Experts", title: "Professional IT Team", description: "Our team designs practical solutions for networks, servers, systems, and information security based on each organization's needs." },
+    { id: "professional-team", icon: Users, stat: "20+", statLabel: "Experts", title: "Professional IT Team", description: "Our team designs practical solutions for networks, servers, systems, and information security based on each organization's needs." },
     { id: "business-growth", icon: TrendingUp, stat: "10+", statLabel: "Years", title: "Technology for Business Growth", description: "We prepare your organization for future growth through cloud, automation, and data-driven technology solutions." },
   ],
 };
@@ -26,7 +26,7 @@ const mn = {
   values: [
     { id: "secure-solutions", icon: ShieldCheck, stat: "100%", statLabel: "Аюулгүй", title: "Аюулгүй, найдвартай шийдэл", description: "Байгууллагын мэдээлэл, систем, дэд бүтцийг хамгаалах бодлого, тохиргоо, хяналтыг цогцоор хэрэгжүүлнэ." },
     { id: "fast-support", icon: Headphones, stat: "24/7", statLabel: "Дэмжлэг", title: "Шуурхай дэмжлэг үйлчилгээ", description: "Техникийн асуудлыг хурдан шуурхай оношлон шийдвэрлэж, байгууллагын өдөр тутмын үйл ажиллагааг тасалдуулахгүй байхад анхаарна." },
-    { id: "professional-team", icon: Users, stat: "55+", statLabel: "Мэргэжилтэн", title: "Мэргэжлийн IT баг", description: "Сүлжээ, сервер, систем болон мэдээллийн аюулгүй байдлын чиглэлээр мэргэшсэн баг хамт олон." },
+    { id: "professional-team", icon: Users, stat: "20+", statLabel: "Мэргэжилтэн", title: "Мэргэжлийн IT баг", description: "Сүлжээ, сервер, систем болон мэдээллийн аюулгүй байдлын чиглэлээр мэргэшсэн баг хамт олон." },
     { id: "business-growth", icon: TrendingUp, stat: "10+", statLabel: "Жил", title: "Бизнесийн өсөлтийг дэмжих технологи", description: "Клауд, автоматжуулалт, дата-д суурилсан шийдлээр байгууллагын ирээдүйн өсөлтөд бэлэн шийдэл гаргах." },
   ],
 };

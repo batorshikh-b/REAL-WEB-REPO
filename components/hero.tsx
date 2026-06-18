@@ -24,7 +24,7 @@ const en = {
     { value: "20+", label: "Years Experience" },
     { value: "15+", label: "Partners" },
     { value: "10+", label: "Ongoing Projects" },
-    { value: "55+", label: "Specialists" },
+    { value: "20+", label: "Specialists" },
   ],
 };
 
@@ -39,7 +39,7 @@ const mn = {
     { value: "20+", label: "Жилийн туршлага" },
     { value: "15+", label: "Харилцагчид" },
     { value: "10+", label: "Идэвхтэй төслүүд" },
-    { value: "55+", label: "Мэргэжилтэн" },
+    { value: "20+", label: "Мэргэжилтэн" },
   ],
 };
 
